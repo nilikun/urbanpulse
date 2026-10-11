@@ -3,7 +3,7 @@
 <h1 align="center">UrbanPulse</h1>
 <p align="center"><b>Greenery that proves who it cools.</b><br>A block-level heat-resilience and inclusion index for Singapore's public housing, with a community-data loop and a business model that turns mandatory greenery into verifiable returns.</p>
 
-<p align="center"><a href="docs/concept-brief.md">Concept brief</a> · <a href="docs/METHODS.md">Methods</a> · <a href="docs/DATA.md">Data</a> · <a href="web/">Website</a></p>
+<p align="center"><a href="https://urbanpulse.fuyune.com"><b>Live site → urbanpulse.fuyune.com</b></a><br><a href="docs/concept-brief.md">Concept brief</a> · <a href="docs/METHODS.md">Methods</a> · <a href="docs/DATA.md">Data</a> · <a href="web/">Website</a></p>
 
 ![The UrbanPulse index for 10,749 HDB blocks](figures/fig2_index.png)
 
@@ -97,7 +97,7 @@ python run_all.py --from index    # re-score from cached data
 
 * Satellite data is read from the [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com) (no account needed); the first run caches about 1.4 GB.
 * The developer case needs [`gurobipy`](https://www.gurobi.com/academia/) with an academic licence. Everything else is open source. Python 3.11; on Windows set `PYTHONUTF8=1`.
-* Website: `cd web && python -m http.server`, then open <http://localhost:8000>. It is a static site and can be deployed with `npx wrangler deploy` (see [`wrangler.jsonc`](wrangler.jsonc)).
+* Website: live at <https://urbanpulse.fuyune.com>. Locally: `cd web && python -m http.server`, then open <http://localhost:8000>. Deployed as a static Cloudflare Worker with `npx wrangler deploy` (see [`wrangler.jsonc`](wrangler.jsonc)).
 
 ```
 uri/                  the index pipeline

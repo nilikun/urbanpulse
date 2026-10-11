@@ -1,0 +1,17 @@
+numpy>=1.26
+pandas>=2.2
+scipy>=1.13
+scikit-learn>=1.5
+statsmodels>=0.14
+geopandas>=1.0
+shapely>=2.0
+pyogrio>=0.9
+pyproj>=3.6
+rasterio>=1.4
+pystac-client>=0.8
+planetary-computer>=1.0
+osmium>=4.0
+matplotlib>=3.9
+pillow>=10.0
+# developer case study only (academic licence: https://www.gurobi.com/academia/)
+gurobipy>=11.0

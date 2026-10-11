@@ -1,0 +1,41 @@
+blocks within 800 m: 107, vulnerable-weighted residents: 4357, pocket candidates: 53 (8 on-site), eldercare: 3
+Set parameter Username
+Set parameter LicenseID to value 2871632
+Academic license - for non-commercial use only - expires 2027-10-05
+
+== Compliance-minimum: NPV    2.81M | premium  5.84M | SLL 0.00M | LCC  3.03M | capex  1.43M | fee S$22.1/unit/mo | GnPR 3.50 | LRA 46% | EQ 0.0 | R200 0 | cool 1.13
+    {'SHRUB': 3674, 'TREE': 2952, 'TREEH': 5052} {}
+
+== Typical showcase: NPV    1.08M | premium  5.83M | SLL 0.00M | LCC  4.76M | capex  2.12M | fee S$34.6/unit/mo | GnPR 3.50 | LRA 54% | EQ 0.0 | R200 0 | cool 1.05
+    {'SHRUB': 5074, 'TREE': 1552, 'TREEH': 5052, 'INTR': 600, 'WALL': 500} {}
+
+== Index-guided design: NPV    3.42M | premium  5.90M | SLL 0.34M | LCC  2.81M | capex  1.81M | fee S$16.0/unit/mo | GnPR 3.50 | LRA 35% | EQ 2881.7 | R200 898 | cool 1.37
+    {'TURF': 346, 'TREE': 2973, 'MICRO': 1732, 'TREEH': 5052, 'FARM': 800} {'edge-N': 600, 'edge-W': 346, 'edge-NW': 600}
+
+== naive_edge_best: NPV    3.42M | premium  5.90M | SLL 0.34M | LCC  2.81M | capex  1.81M | fee S$16.0/unit/mo | GnPR 3.50 | LRA 35% | EQ 3163.3 | R200 712 | cool 1.37
+
+== naive_edge_worst: NPV    3.42M | premium  5.90M | SLL 0.34M | LCC  2.81M | capex  1.81M | fee S$16.0/unit/mo | GnPR 3.50 | LRA 35% | EQ 1886.6 | R200 244 | cool 1.37
+
+frontier:
+  eq     0.0  npv   3.58M  r200      0  pockets {}
+  eq   360.2  npv   3.57M  r200    712  pockets {'edge-NW': 176}
+  eq   720.5  npv   3.55M  r200    712  pockets {'edge-NW': 352}
+  eq  1080.7  npv   3.53M  r200    712  pockets {'edge-NW': 528}
+  eq  1441.0  npv   3.51M  r200    831  pockets {'edge-N': 118, 'edge-NW': 600}
+  eq  1801.2  npv   3.49M  r200    831  pockets {'edge-N': 316, 'edge-NW': 600}
+  eq  2161.5  npv   3.47M  r200    831  pockets {'edge-N': 515, 'edge-NW': 600}
+  eq  2521.7  npv   3.45M  r200    898  pockets {'edge-N': 600, 'edge-W': 126, 'edge-NW': 600}
+  eq  2881.9  npv   3.42M  r200    898  pockets {'edge-N': 600, 'edge-W': 346, 'edge-NW': 600}
+  eq  3242.2  npv   3.40M  r200    898  pockets {'edge-N': 600, 'edge-W': 565, 'edge-NW': 600}
+  eq  3602.4  npv   3.34M  r200    947  pockets {'edge-N': 600, 'edge-NW': 600, 'blk-569A': 381}
+  eq  3962.7  npv   3.31M  r200    947  pockets {'edge-N': 600, 'edge-NW': 600, 'blk-569A': 487}
+  eq  4322.9  npv   3.27M  r200    947  pockets {'edge-N': 600, 'edge-NW': 600, 'blk-569A': 594}
+  eq  4683.2  npv   3.24M  r200    947  pockets {'edge-N': 600, 'edge-NW': 600, 'blk-569A': 700}
+  eq  5043.4  npv   3.15M  r200    878  pockets {'edge-NW': 600, 'blk-569A': 800, 'blk-571C': 372}
+  eq  5403.6  npv   3.11M  r200    878  pockets {'edge-NW': 600, 'blk-569A': 800, 'blk-571C': 493}
+  eq  5763.9  npv   3.07M  r200    878  pockets {'edge-NW': 600, 'blk-569A': 800, 'blk-571C': 614}
+  eq  6124.1  npv   3.04M  r200    878  pockets {'edge-NW': 600, 'blk-569A': 800, 'blk-571C': 734}
+  eq  6484.4  npv   2.91M  r200    849  pockets {'blk-569A': 800, 'blk-571C': 800, 'blk-572A': 527}
+  eq  6844.6  npv   2.86M  r200    849  pockets {'blk-569A': 800, 'blk-571C': 800, 'blk-572A': 663}
+  eq  7204.9  npv   2.82M  r200    849  pockets {'blk-569A': 800, 'blk-571C': 800, 'blk-572A': 800}
+knee eq 2881.9456725585446 eq_max 7205.584739870348

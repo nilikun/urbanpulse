@@ -1,0 +1,1382 @@
+{
+ "benchmark": {
+  "towns": [
+   {
+    "town": "Bukit Panjang",
+    "blocks": 346,
+    "units": 37096,
+    "rental": 501,
+    "seniors": 13929,
+    "score": 63.294,
+    "score_plain": 63.081,
+    "inclusion_gap": 13.772,
+    "lst_anom": 0.292,
+    "wbgt_hours": 121.929,
+    "lst_change": 0.465,
+    "median_year": 1996,
+    "heat": 61.539,
+    "shade": 52.902,
+    "green": 63.761,
+    "community": 69.321,
+    "access": 50.778,
+    "flood": 97.495
+   },
+   {
+    "town": "Queenstown",
+    "blocks": 242,
+    "units": 34920,
+    "rental": 4407,
+    "seniors": 19569,
+    "score": 60.277,
+    "score_plain": 59.664,
+    "inclusion_gap": 9.663,
+    "lst_anom": -0.384,
+    "wbgt_hours": 93.67,
+    "lst_change": -1.326,
+    "median_year": 1975,
+    "heat": 76.892,
+    "shade": 82.886,
+    "green": 49.777,
+    "community": 36.492,
+    "access": 67.716,
+    "flood": 13.786
+   },
+   {
+    "town": "Bukit Merah",
+    "blocks": 426,
+    "units": 53070,
+    "rental": 8118,
+    "seniors": 30589,
+    "score": 60.181,
+    "score_plain": 58.18,
+    "inclusion_gap": 17.15,
+    "lst_anom": 0.392,
+    "wbgt_hours": 141.755,
+    "lst_change": -0.799,
+    "median_year": 1977,
+    "heat": 68.3,
+    "shade": 86.725,
+    "green": 59.594,
+    "community": 35.657,
+    "access": 69.247,
+    "flood": 10.865
+   },
+   {
+    "town": "Punggol",
+    "blocks": 557,
+    "units": 63264,
+    "rental": 2268,
+    "seniors": 16330,
+    "score": 60.141,
+    "score_plain": 60.334,
+    "inclusion_gap": 12.142,
+    "lst_anom": -0.629,
+    "wbgt_hours": 150.848,
+    "lst_change": -0.049,
+    "median_year": 2012,
+    "heat": 80.586,
+    "shade": 54.293,
+    "green": 47.623,
+    "community": 44.45,
+    "access": 49.156,
+    "flood": 79.517
+   },
+   {
+    "town": "Clementi",
+    "blocks": 206,
+    "units": 28709,
+    "rental": 959,
+    "seniors": 18006,
+    "score": 60.117,
+    "score_plain": 59.247,
+    "inclusion_gap": 14.88,
+    "lst_anom": 0.118,
+    "wbgt_hours": 79.278,
+    "lst_change": -0.603,
+    "median_year": 1979,
+    "heat": 69.51,
+    "shade": 77.189,
+    "green": 44.798,
+    "community": 47.347,
+    "access": 56.725,
+    "flood": 49.707
+   },
+   {
+    "town": "Bukit Batok",
+    "blocks": 435,
+    "units": 47154,
+    "rental": 1724,
+    "seniors": 17795,
+    "score": 57.945,
+    "score_plain": 57.803,
+    "inclusion_gap": 19.348,
+    "lst_anom": 0.5,
+    "wbgt_hours": 90.148,
+    "lst_change": -0.859,
+    "median_year": 1985,
+    "heat": 57.239,
+    "shade": 63.54,
+    "green": 56.009,
+    "community": 58.901,
+    "access": 48.633,
+    "flood": 63.96
+   },
+   {
+    "town": "Sengkang",
+    "blocks": 669,
+    "units": 76265,
+    "rental": 1687,
+    "seniors": 21710,
+    "score": 56.713,
+    "score_plain": 55.61,
+    "inclusion_gap": 14.844,
+    "lst_anom": -0.141,
+    "wbgt_hours": 120.007,
+    "lst_change": 0.919,
+    "median_year": 2002,
+    "heat": 75.191,
+    "shade": 50.746,
+    "green": 40.602,
+    "community": 59.247,
+    "access": 56.696,
+    "flood": 42.84
+   },
+   {
+    "town": "Sembawang",
+    "blocks": 281,
+    "units": 32523,
+    "rental": 1838,
+    "seniors": 7971,
+    "score": 56.48,
+    "score_plain": 56.415,
+    "inclusion_gap": 11.164,
+    "lst_anom": -0.143,
+    "wbgt_hours": 151.461,
+    "lst_change": 1.524,
+    "median_year": 2000,
+    "heat": 75.23,
+    "shade": 62.043,
+    "green": 57.945,
+    "community": 37.538,
+    "access": 41.378,
+    "flood": 47.345
+   },
+   {
+    "town": "Marine Parade",
+    "blocks": 59,
+    "units": 7854,
+    "rental": 1325,
+    "seniors": 4299,
+    "score": 55.391,
+    "score_plain": 55.429,
+    "inclusion_gap": 18.827,
+    "lst_anom": 1.127,
+    "wbgt_hours": 153.502,
+    "lst_change": 0.201,
+    "median_year": 1974,
+    "heat": 45.762,
+    "shade": 66.641,
+    "green": 65.754,
+    "community": 49.603,
+    "access": 72.082,
+    "flood": 25.061
+   },
+   {
+    "town": "Bedok",
+    "blocks": 530,
+    "units": 64414,
+    "rental": 4170,
+    "seniors": 35454,
+    "score": 54.523,
+    "score_plain": 51.803,
+    "inclusion_gap": 24.322,
+    "lst_anom": 1.011,
+    "wbgt_hours": 91.749,
+    "lst_change": -0.297,
+    "median_year": 1980,
+    "heat": 52.78,
+    "shade": 70.742,
+    "green": 47.508,
+    "community": 61.528,
+    "access": 55.834,
+    "flood": 24.491
+   },
+   {
+    "town": "Choa Chu Kang",
+    "blocks": 529,
+    "units": 50171,
+    "rental": 1379,
+    "seniors": 15565,
+    "score": 53.331,
+    "score_plain": 53.34,
+    "inclusion_gap": 14.638,
+    "lst_anom": 0.696,
+    "wbgt_hours": 84.114,
+    "lst_change": 0.772,
+    "median_year": 1994,
+    "heat": 55.649,
+    "shade": 45.856,
+    "green": 49.033,
+    "community": 47.954,
+    "access": 49.262,
+    "flood": 83.101
+   },
+   {
+    "town": "Ang Mo Kio",
+    "blocks": 392,
+    "units": 52139,
+    "rental": 4254,
+    "seniors": 32033,
+    "score": 52.136,
+    "score_plain": 51.343,
+    "inclusion_gap": 14.163,
+    "lst_anom": 1.17,
+    "wbgt_hours": 115.944,
+    "lst_change": 0.374,
+    "median_year": 1979,
+    "heat": 45.681,
+    "shade": 48.14,
+    "green": 67.393,
+    "community": 47.079,
+    "access": 62.171,
+    "flood": 45.91
+   },
+   {
+    "town": "Jurong West",
+    "blocks": 744,
+    "units": 76800,
+    "rental": 2976,
+    "seniors": 28504,
+    "score": 51.428,
+    "score_plain": 48.459,
+    "inclusion_gap": 12.728,
+    "lst_anom": 1.335,
+    "wbgt_hours": 118.822,
+    "lst_change": 0.907,
+    "median_year": 1994,
+    "heat": 44.449,
+    "shade": 60.922,
+    "green": 44.816,
+    "community": 73.425,
+    "access": 50.23,
+    "flood": 28.604
+   },
+   {
+    "town": "Jurong East",
+    "blocks": 234,
+    "units": 24691,
+    "rental": 654,
+    "seniors": 13545,
+    "score": 50.39,
+    "score_plain": 50.924,
+    "inclusion_gap": 15.946,
+    "lst_anom": 1.072,
+    "wbgt_hours": 96.101,
+    "lst_change": -0.2,
+    "median_year": 1983,
+    "heat": 46.942,
+    "shade": 64.641,
+    "green": 39.382,
+    "community": 54.57,
+    "access": 45.819,
+    "flood": 47.61
+   },
+   {
+    "town": "Woodlands",
+    "blocks": 735,
+    "units": 74956,
+    "rental": 3928,
+    "seniors": 21651,
+    "score": 49.702,
+    "score_plain": 46.676,
+    "inclusion_gap": 13.571,
+    "lst_anom": 0.877,
+    "wbgt_hours": 138.541,
+    "lst_change": 1.274,
+    "median_year": 1996,
+    "heat": 52.313,
+    "shade": 45.763,
+    "green": 48.684,
+    "community": 46.21,
+    "access": 46.954,
+    "flood": 61.943
+   },
+   {
+    "town": "Toa Payoh",
+    "blocks": 386,
+    "units": 48943,
+    "rental": 3902,
+    "seniors": 28900,
+    "score": 48.77,
+    "score_plain": 47.978,
+    "inclusion_gap": 15.243,
+    "lst_anom": 0.863,
+    "wbgt_hours": 147.427,
+    "lst_change": 0.205,
+    "median_year": 1985,
+    "heat": 53.061,
+    "shade": 60.032,
+    "green": 37.939,
+    "community": 38.14,
+    "access": 61.042,
+    "flood": 29.298
+   },
+   {
+    "town": "Kallang/Whampoa",
+    "blocks": 312,
+    "units": 42269,
+    "rental": 6480,
+    "seniors": 22284,
+    "score": 47.03,
+    "score_plain": 46.24,
+    "inclusion_gap": 11.963,
+    "lst_anom": 1.557,
+    "wbgt_hours": 162.375,
+    "lst_change": -0.26,
+    "median_year": 1980,
+    "heat": 40.635,
+    "shade": 49.325,
+    "green": 52.434,
+    "community": 55.827,
+    "access": 65.325,
+    "flood": 9.686
+   },
+   {
+    "town": "Pasir Ris",
+    "blocks": 441,
+    "units": 30924,
+    "rental": 421,
+    "seniors": 10341,
+    "score": 46.078,
+    "score_plain": 46.348,
+    "inclusion_gap": 12.562,
+    "lst_anom": 0.942,
+    "wbgt_hours": 62.172,
+    "lst_change": -0.583,
+    "median_year": 1993,
+    "heat": 46.046,
+    "shade": 36.54,
+    "green": 57.668,
+    "community": 42.942,
+    "access": 26.252,
+    "flood": 82.287
+   },
+   {
+    "town": "Yishun",
+    "blocks": 704,
+    "units": 71685,
+    "rental": 2212,
+    "seniors": 26950,
+    "score": 45.296,
+    "score_plain": 47.482,
+    "inclusion_gap": 16.261,
+    "lst_anom": 1.227,
+    "wbgt_hours": 131.965,
+    "lst_change": -0.381,
+    "median_year": 1987,
+    "heat": 38.86,
+    "shade": 34.644,
+    "green": 52.4,
+    "community": 36.194,
+    "access": 43.2,
+    "flood": 88.825
+   },
+   {
+    "town": "Tampines",
+    "blocks": 921,
+    "units": 87143,
+    "rental": 2592,
+    "seniors": 35768,
+    "score": 45.27,
+    "score_plain": 44.994,
+    "inclusion_gap": 12.335,
+    "lst_anom": 1.56,
+    "wbgt_hours": 51.961,
+    "lst_change": -1.143,
+    "median_year": 1989,
+    "heat": 35.462,
+    "shade": 42.664,
+    "green": 43.315,
+    "community": 56.141,
+    "access": 46.791,
+    "flood": 59.35
+   },
+   {
+    "town": "Central Area",
+    "blocks": 79,
+    "units": 11997,
+    "rental": 3117,
+    "seniors": 6463,
+    "score": 41.784,
+    "score_plain": 38.235,
+    "inclusion_gap": 10.969,
+    "lst_anom": 2.285,
+    "wbgt_hours": 147.164,
+    "lst_change": -0.254,
+    "median_year": 1979,
+    "heat": 33.15,
+    "shade": 38.046,
+    "green": 64.091,
+    "community": 24.335,
+    "access": 78.43,
+    "flood": 8.586
+   },
+   {
+    "town": "Geylang",
+    "blocks": 310,
+    "units": 36014,
+    "rental": 3582,
+    "seniors": 18526,
+    "score": 41.773,
+    "score_plain": 40.239,
+    "inclusion_gap": 13.337,
+    "lst_anom": 1.884,
+    "wbgt_hours": 160.41,
+    "lst_change": -0.346,
+    "median_year": 1984,
+    "heat": 31.477,
+    "shade": 51.078,
+    "green": 46.74,
+    "community": 31.681,
+    "access": 64.543,
+    "flood": 22.439
+   },
+   {
+    "town": "Bishan",
+    "blocks": 236,
+    "units": 21109,
+    "rental": 413,
+    "seniors": 11350,
+    "score": 41.765,
+    "score_plain": 42.372,
+    "inclusion_gap": 9.859,
+    "lst_anom": 2.149,
+    "wbgt_hours": 139.716,
+    "lst_change": -0.322,
+    "median_year": 1987,
+    "heat": 22.964,
+    "shade": 33.839,
+    "green": 65.068,
+    "community": 46.582,
+    "access": 44.416,
+    "flood": 58.467
+   },
+   {
+    "town": "Bukit Timah",
+    "blocks": 27,
+    "units": 2554,
+    "rental": 0,
+    "seniors": 1395,
+    "score": 41.251,
+    "score_plain": 41.813,
+    "inclusion_gap": 10.919,
+    "lst_anom": 2.033,
+    "wbgt_hours": 103.259,
+    "lst_change": -0.14,
+    "median_year": 1988,
+    "heat": 30.951,
+    "shade": 30.297,
+    "green": 48.199,
+    "community": 31.058,
+    "access": 58.588,
+    "flood": 67.765
+   },
+   {
+    "town": "Hougang",
+    "blocks": 604,
+    "units": 58850,
+    "rental": 1522,
+    "seniors": 27893,
+    "score": 40.178,
+    "score_plain": 40.254,
+    "inclusion_gap": 12.919,
+    "lst_anom": 1.528,
+    "wbgt_hours": 115.948,
+    "lst_change": 0.199,
+    "median_year": 1988,
+    "heat": 36.713,
+    "shade": 32.887,
+    "green": 56.129,
+    "community": 53.963,
+    "access": 40.765,
+    "flood": 17.94
+   },
+   {
+    "town": "Serangoon",
+    "blocks": 232,
+    "units": 21631,
+    "rental": 522,
+    "seniors": 12258,
+    "score": 34.852,
+    "score_plain": 34.693,
+    "inclusion_gap": 10.435,
+    "lst_anom": 2.018,
+    "wbgt_hours": 126.594,
+    "lst_change": 0.311,
+    "median_year": 1985,
+    "heat": 24.898,
+    "shade": 25.149,
+    "green": 38.415,
+    "community": 59.218,
+    "access": 31.916,
+    "flood": 41.653
+   },
+   {
+    "town": "Tengah",
+    "blocks": 112,
+    "units": 12219,
+    "rental": 24,
+    "seniors": 5383,
+    "score": 33.324,
+    "score_plain": 33.977,
+    "inclusion_gap": 6.991,
+    "lst_anom": 0.324,
+    "wbgt_hours": 108.808,
+    "lst_change": 0.757,
+    "median_year": 2024,
+    "heat": 62.849,
+    "shade": 23.558,
+    "green": 41.677,
+    "community": 3.949,
+    "access": 21.814,
+    "flood": 27.842
+   }
+  ],
+  "design_targets": [
+   {
+    "key": "canopy200",
+    "label": "Tree canopy within 200 m (NDVI > 0.6)",
+    "unit": "% of land",
+    "higher_is_better": true,
+    "island_median": 10.501193046569824,
+    "target": 19.729515075683594,
+    "best_towns": [
+     "Bukit Merah",
+     "Queenstown",
+     "Marine Parade",
+     "Clementi",
+     "Bedok"
+    ]
+   },
+   {
+    "key": "route_shade400",
+    "label": "Shaded share of walkways within 400 m",
+    "unit": "% of length",
+    "higher_is_better": true,
+    "island_median": 35.91608652610812,
+    "target": 54.34453654767697,
+    "best_towns": [
+     "Bukit Merah",
+     "Queenstown",
+     "Clementi",
+     "Bedok",
+     "Jurong East"
+    ]
+   },
+   {
+    "key": "park_walk",
+    "label": "Walk to nearest park",
+    "unit": "m (network)",
+    "higher_is_better": false,
+    "island_median": 817.6785018701476,
+    "target": 490.0574750952233,
+    "best_towns": [
+     "Bukit Merah",
+     "Central Area",
+     "Marine Parade",
+     "Ang Mo Kio",
+     "Bishan"
+    ]
+   },
+   {
+    "key": "park_area800",
+    "label": "Park area within 800 m (10-min walk)",
+    "unit": "ha",
+    "higher_is_better": true,
+    "island_median": 2.1136516603590296,
+    "target": 19.366916840560364,
+    "best_towns": [
+     "Marine Parade",
+     "Ang Mo Kio",
+     "Bishan",
+     "Pasir Ris",
+     "Bukit Timah"
+    ]
+   },
+   {
+    "key": "gardens400",
+    "label": "Community in Bloom gardens within 400 m",
+    "unit": "count",
+    "higher_is_better": true,
+    "island_median": 5.0,
+    "target": 6.0,
+    "best_towns": [
+     "Bukit Panjang",
+     "Jurong West",
+     "Bedok",
+     "Bukit Batok",
+     "Serangoon"
+    ]
+   },
+   {
+    "key": "walk_aac",
+    "label": "Shaded walk to eldercare / AAC",
+    "unit": "m (heat-adjusted)",
+    "higher_is_better": false,
+    "island_median": 1398.5033490867252,
+    "target": 641.4121186622654,
+    "best_towns": [
+     "Central Area",
+     "Marine Parade",
+     "Bukit Merah",
+     "Queenstown",
+     "Bukit Timah"
+    ]
+   },
+   {
+    "key": "walk_clinic",
+    "label": "Shaded walk to CHAS clinic",
+    "unit": "m (heat-adjusted)",
+    "higher_is_better": false,
+    "island_median": 525.5797395715826,
+    "target": 413.336061165136,
+    "best_towns": [
+     "Central Area",
+     "Bukit Merah",
+     "Ang Mo Kio",
+     "Queenstown",
+     "Kallang/Whampoa"
+    ]
+   },
+   {
+    "key": "walk_hawker",
+    "label": "Shaded walk to hawker centre",
+    "unit": "m (heat-adjusted)",
+    "higher_is_better": false,
+    "island_median": 1314.9554648061012,
+    "target": 632.567330826301,
+    "best_towns": [
+     "Central Area",
+     "Bukit Merah",
+     "Geylang",
+     "Marine Parade",
+     "Queenstown"
+    ]
+   },
+   {
+    "key": "walk_mrt",
+    "label": "Shaded walk to MRT exit",
+    "unit": "m (heat-adjusted)",
+    "higher_is_better": false,
+    "island_median": 1000.511639210571,
+    "target": 506.5133336845821,
+    "best_towns": [
+     "Marine Parade",
+     "Central Area",
+     "Punggol",
+     "Sengkang",
+     "Bukit Panjang"
+    ]
+   },
+   {
+    "key": "walk_bus",
+    "label": "Shaded walk to bus stop",
+    "unit": "m (heat-adjusted)",
+    "higher_is_better": false,
+    "island_median": 325.754313163564,
+    "target": 284.34804526056297,
+    "best_towns": [
+     "Central Area",
+     "Tengah",
+     "Punggol",
+     "Queenstown",
+     "Marine Parade"
+    ]
+   }
+  ],
+  "island_gap": 17.488341530228162
+ },
+ "heat_drivers": {
+  "n": 10749,
+  "ols_r2": 0.6776634185770167,
+  "coef": [
+   {
+    "feature": "canopy200",
+    "beta_std": -0.46296550782650253,
+    "ci_lo": -0.5253169472441932,
+    "ci_hi": -0.4006140684088119,
+    "p": 5.595956660776599e-48,
+    "per_unit": -0.048074723540385014
+   },
+   {
+    "feature": "impervious100",
+    "beta_std": 0.4882773976619483,
+    "ci_lo": 0.4402360924053864,
+    "ci_hi": 0.5363187029185101,
+    "p": 2.703580853855301e-88,
+    "per_unit": 0.0313952035058587
+   },
+   {
+    "feature": "park_area800",
+    "beta_std": -0.09123525276367327,
+    "ci_lo": -0.15619315479757523,
+    "ci_hi": -0.026277350729771318,
+    "p": 0.005908326723380384,
+    "per_unit": -0.0079207897983645
+   },
+   {
+    "feature": "blue_dist",
+    "beta_std": 0.062193482794609185,
+    "ci_lo": 0.0013839365945477675,
+    "ci_hi": 0.12300302899467061,
+    "p": 0.04500904649190656,
+    "per_unit": 0.026034911932550534
+   },
+   {
+    "feature": "floors",
+    "beta_std": -0.22496903443282001,
+    "ci_lo": -0.2953133425025454,
+    "ci_hi": -0.15462472636309463,
+    "p": 3.6527837418590027e-10,
+    "per_unit": -0.03616445634761764
+   },
+   {
+    "feature": "year_built",
+    "beta_std": -0.47956457826385407,
+    "ci_lo": -0.6136516184986716,
+    "ci_hi": -0.3454775380290366,
+    "p": 2.3858313765110244e-12,
+    "per_unit": -0.031549223004887314
+   },
+   {
+    "feature": "hdb_footprint200",
+    "beta_std": -0.12822679749802807,
+    "ci_lo": -0.19590969654158452,
+    "ci_hi": -0.06054389845447161,
+    "p": 0.00020465784635013745,
+    "per_unit": -0.03016622250338111
+   }
+  ],
+  "gbm_r2_leave_one_town_out": 0.5898561178591699,
+  "importance": [
+   {
+    "feature": "canopy200",
+    "importance": 0.31396793615052654,
+    "sd": 0.004966356410289522
+   },
+   {
+    "feature": "impervious100",
+    "importance": 0.2024790971119002,
+    "sd": 0.0028609033756155323
+   },
+   {
+    "feature": "park_area800",
+    "importance": 0.08720660400359062,
+    "sd": 0.0007579835229884707
+   },
+   {
+    "feature": "blue_dist",
+    "importance": 0.07355299008616742,
+    "sd": 0.0009226671313866736
+   },
+   {
+    "feature": "floors",
+    "importance": 0.12744246656217126,
+    "sd": 0.00279880426245803
+   },
+   {
+    "feature": "year_built",
+    "importance": 0.4937112919538225,
+    "sd": 0.004757329306858922
+   },
+   {
+    "feature": "hdb_footprint200",
+    "importance": 0.08739026704656633,
+    "sd": 0.0014476311923508672
+   }
+  ],
+  "pdp_canopy": {
+   "x": [
+    0.9546539783477783,
+    2.5692124442259408,
+    4.183770910104103,
+    5.798329375982266,
+    7.412887841860428,
+    9.02744630773859,
+    10.642004773616753,
+    12.256563239494916,
+    13.871121705373078,
+    15.48568017125124,
+    17.1002386371294,
+    18.714797103007566,
+    20.329355568885727,
+    21.94391403476389,
+    23.558472500642054,
+    25.173030966520216,
+    26.787589432398377,
+    28.40214789827654,
+    30.0167063641547,
+    31.631264830032865,
+    33.24582329591102,
+    34.86038176178919,
+    36.474940227667354,
+    38.089498693545515,
+    39.70405715942368
+   ],
+   "y": [
+    1.7556491565129584,
+    1.6189476187784788,
+    1.4698814841922316,
+    1.3599986981838226,
+    1.162197215024246,
+    1.0604350623177914,
+    0.9493434395826912,
+    0.8758850871106049,
+    0.8659205007561459,
+    0.8183070726289149,
+    0.6443315765145439,
+    0.5350369412055987,
+    0.48678946867353784,
+    0.5213027417925535,
+    0.44667065618468965,
+    0.31299761971330964,
+    0.26478690732886556,
+    0.17249472267750252,
+    0.09619989200796537,
+    0.037970265422937154,
+    0.029105280172447123,
+    0.0038633109824047097,
+    -0.08909256068789227,
+    -0.08909256068789227,
+    -0.1786306627651622
+   ]
+  },
+  "canopy_10pp_effect_c": -0.4807472354038501
+ },
+ "heat_history": {
+  "by_era": [
+   {
+    "era": "<1980",
+    "mean": -0.07500000298023224,
+    "median": -0.10300000011920929,
+    "count": 1650
+   },
+   {
+    "era": "1980s",
+    "mean": -0.5899999737739563,
+    "median": -0.5490000247955322,
+    "count": 3341
+   },
+   {
+    "era": "1990-97",
+    "mean": 0.5870000123977661,
+    "median": 0.41200000047683716,
+    "count": 2012
+   },
+   {
+    "era": "1998-2009",
+    "mean": 0.9909999966621399,
+    "median": 1.1339999437332153,
+    "count": 1543
+   },
+   {
+    "era": "2010+",
+    "mean": -0.06199999898672104,
+    "median": 0.032999999821186066,
+    "count": 2203
+   }
+  ],
+  "by_town": [
+   {
+    "town": "Ang Mo Kio",
+    "then": 0.7960000038146973,
+    "now": 1.1699999570846558,
+    "change": 0.37400001287460327,
+    "median_year": 1979.0,
+    "blocks": 392
+   },
+   {
+    "town": "Bedok",
+    "then": 1.3079999685287476,
+    "now": 1.0110000371932983,
+    "change": -0.296999990940094,
+    "median_year": 1980.0,
+    "blocks": 530
+   },
+   {
+    "town": "Bishan",
+    "then": 2.4709999561309814,
+    "now": 2.1489999294281006,
+    "change": -0.32199999690055847,
+    "median_year": 1987.0,
+    "blocks": 236
+   },
+   {
+    "town": "Bukit Batok",
+    "then": 1.3580000400543213,
+    "now": 0.5,
+    "change": -0.859000027179718,
+    "median_year": 1985.0,
+    "blocks": 435
+   },
+   {
+    "town": "Bukit Merah",
+    "then": 1.190999984741211,
+    "now": 0.3919999897480011,
+    "change": -0.7990000247955322,
+    "median_year": 1977.0,
+    "blocks": 426
+   },
+   {
+    "town": "Bukit Panjang",
+    "then": -0.17299999296665192,
+    "now": 0.2919999957084656,
+    "change": 0.4650000035762787,
+    "median_year": 1996.0,
+    "blocks": 346
+   },
+   {
+    "town": "Bukit Timah",
+    "then": 2.171999931335449,
+    "now": 2.0329999923706055,
+    "change": -0.14000000059604645,
+    "median_year": 1988.0,
+    "blocks": 27
+   },
+   {
+    "town": "Central Area",
+    "then": 2.5390000343322754,
+    "now": 2.2850000858306885,
+    "change": -0.2540000081062317,
+    "median_year": 1979.0,
+    "blocks": 79
+   },
+   {
+    "town": "Choa Chu Kang",
+    "then": -0.07599999755620956,
+    "now": 0.6959999799728394,
+    "change": 0.7720000147819519,
+    "median_year": 1994.0,
+    "blocks": 529
+   },
+   {
+    "town": "Clementi",
+    "then": 0.7210000157356262,
+    "now": 0.11800000071525574,
+    "change": -0.6029999852180481,
+    "median_year": 1979.0,
+    "blocks": 206
+   },
+   {
+    "town": "Geylang",
+    "then": 2.2300000190734863,
+    "now": 1.8839999437332153,
+    "change": -0.34599998593330383,
+    "median_year": 1984.0,
+    "blocks": 310
+   },
+   {
+    "town": "Hougang",
+    "then": 1.3289999961853027,
+    "now": 1.527999997138977,
+    "change": 0.19900000095367432,
+    "median_year": 1988.0,
+    "blocks": 604
+   },
+   {
+    "town": "Jurong East",
+    "then": 1.2719999551773071,
+    "now": 1.0720000267028809,
+    "change": -0.20000000298023224,
+    "median_year": 1983.0,
+    "blocks": 234
+   },
+   {
+    "town": "Jurong West",
+    "then": 0.42800000309944153,
+    "now": 1.3350000381469727,
+    "change": 0.9070000052452087,
+    "median_year": 1994.0,
+    "blocks": 744
+   },
+   {
+    "town": "Kallang/Whampoa",
+    "then": 1.8170000314712524,
+    "now": 1.5570000410079956,
+    "change": -0.25999999046325684,
+    "median_year": 1980.0,
+    "blocks": 312
+   },
+   {
+    "town": "Marine Parade",
+    "then": 0.9259999990463257,
+    "now": 1.1269999742507935,
+    "change": 0.20100000500679016,
+    "median_year": 1974.0,
+    "blocks": 59
+   },
+   {
+    "town": "Pasir Ris",
+    "then": 1.5260000228881836,
+    "now": 0.9419999718666077,
+    "change": -0.5830000042915344,
+    "median_year": 1993.0,
+    "blocks": 441
+   },
+   {
+    "town": "Punggol",
+    "then": -0.5799999833106995,
+    "now": -0.6290000081062317,
+    "change": -0.04899999871850014,
+    "median_year": 2012.0,
+    "blocks": 557
+   },
+   {
+    "town": "Queenstown",
+    "then": 0.9430000185966492,
+    "now": -0.3840000033378601,
+    "change": -1.3259999752044678,
+    "median_year": 1975.0,
+    "blocks": 242
+   },
+   {
+    "town": "Sembawang",
+    "then": -1.6670000553131104,
+    "now": -0.14300000667572021,
+    "change": 1.5240000486373901,
+    "median_year": 2000.0,
+    "blocks": 281
+   },
+   {
+    "town": "Sengkang",
+    "then": -1.059999942779541,
+    "now": -0.14100000262260437,
+    "change": 0.9190000295639038,
+    "median_year": 2002.0,
+    "blocks": 669
+   },
+   {
+    "town": "Serangoon",
+    "then": 1.7079999446868896,
+    "now": 2.0179998874664307,
+    "change": 0.3109999895095825,
+    "median_year": 1985.0,
+    "blocks": 232
+   },
+   {
+    "town": "Tampines",
+    "then": 2.7039999961853027,
+    "now": 1.559999942779541,
+    "change": -1.1430000066757202,
+    "median_year": 1989.0,
+    "blocks": 921
+   },
+   {
+    "town": "Tengah",
+    "then": -0.43299999833106995,
+    "now": 0.3240000009536743,
+    "change": 0.7570000290870667,
+    "median_year": 2024.0,
+    "blocks": 112
+   },
+   {
+    "town": "Toa Payoh",
+    "then": 0.6589999794960022,
+    "now": 0.8629999756813049,
+    "change": 0.20499999821186066,
+    "median_year": 1985.0,
+    "blocks": 386
+   },
+   {
+    "town": "Woodlands",
+    "then": -0.3970000147819519,
+    "now": 0.8769999742507935,
+    "change": 1.2740000486373901,
+    "median_year": 1996.0,
+    "blocks": 735
+   },
+   {
+    "town": "Yishun",
+    "then": 1.6069999933242798,
+    "now": 1.2269999980926514,
+    "change": -0.38100001215934753,
+    "median_year": 1987.0,
+    "blocks": 704
+   }
+  ],
+  "spearman_year_change": 0.1691243193771781,
+  "p": 8.572594307203104e-70,
+  "note": "Anomalies are relative to each scene's island median, so they show where heat moved, not absolute warming."
+ },
+ "value_lens": {
+  "n": 73304,
+  "blocks": 9467,
+  "r2": 0.935188886944466,
+  "period": "2024-01 to 2026-10",
+  "median_price": 615000.0,
+  "effects": {
+   "+10 pp canopy within 200 m": {
+    "pct": -0.26010512290007837,
+    "lo": -0.4992951213951269,
+    "hi": -0.020340134956964295,
+    "p": 0.03350171842619688
+   },
+   "+1 degC surface heat": {
+    "pct": 0.715461332807843,
+    "lo": 0.5141360484201218,
+    "hi": 0.9171898626665786,
+    "p": 2.8872349150139707e-12
+   },
+   "+100 m walk to park": {
+    "pct": -0.16722697256165153,
+    "lo": -0.2098127830010066,
+    "hi": -0.12462298847916164,
+    "p": 1.4903993002054814e-14
+   },
+   "+100 m walk to MRT": {
+    "pct": -0.6939574204230303,
+    "lo": -0.7347476665402475,
+    "hi": -0.6531504127085919,
+    "p": 5.226682769330395e-242
+   },
+   "+100 m walk to hawker centre": {
+    "pct": -0.12363627052548454,
+    "lo": -0.14921123601346897,
+    "hi": -0.09805475447471901,
+    "p": 2.854669043969212e-21
+   }
+  },
+  "caveat": "Associations within town and month, controlling for flat attributes; not causal estimates."
+ },
+ "robustness": {
+  "lenses": {
+   "Balanced (brief default)": {
+    "weights": {
+     "heat": 0.25,
+     "shade": 0.2,
+     "green": 0.15,
+     "community": 0.15,
+     "access": 0.15,
+     "flood": 0.1
+    },
+    "cr": 0.0,
+    "spearman_vs_default": 0.9999999999999999,
+    "top5": [
+     "Bukit Panjang",
+     "Queenstown",
+     "Bukit Merah",
+     "Punggol",
+     "Clementi"
+    ]
+   },
+   "Senior / resident": {
+    "weights": {
+     "heat": 0.242,
+     "shade": 0.242,
+     "green": 0.083,
+     "community": 0.137,
+     "access": 0.242,
+     "flood": 0.053
+    },
+    "cr": 0.0059,
+    "spearman_vs_default": 0.9676434676434676,
+    "top5": [
+     "Queenstown",
+     "Bukit Merah",
+     "Clementi",
+     "Bukit Panjang",
+     "Punggol"
+    ]
+   },
+   "Planner": {
+    "weights": {
+     "heat": 0.23,
+     "shade": 0.121,
+     "green": 0.23,
+     "community": 0.07,
+     "access": 0.121,
+     "flood": 0.23
+    },
+    "cr": 0.0022,
+    "spearman_vs_default": 0.8009768009768009,
+    "top5": [
+     "Bukit Panjang",
+     "Punggol",
+     "Bukit Batok",
+     "Choa Chu Kang",
+     "Clementi"
+    ]
+   },
+   "Developer / lender": {
+    "weights": {
+     "heat": 0.148,
+     "shade": 0.27,
+     "green": 0.082,
+     "community": 0.27,
+     "access": 0.082,
+     "flood": 0.148
+    },
+    "cr": 0.003,
+    "spearman_vs_default": 0.938949938949939,
+    "top5": [
+     "Bukit Panjang",
+     "Clementi",
+     "Bukit Batok",
+     "Punggol",
+     "Bedok"
+    ]
+   }
+  },
+  "weight_mc": {
+   "Ang Mo Kio": {
+    "p5": 9.0,
+    "p50": 12.0,
+    "p95": 15.0
+   },
+   "Bedok": {
+    "p5": 7.0,
+    "p50": 10.0,
+    "p95": 13.0
+   },
+   "Bishan": {
+    "p5": 20.0,
+    "p50": 22.0,
+    "p95": 25.0
+   },
+   "Bukit Batok": {
+    "p5": 3.0,
+    "p50": 6.0,
+    "p95": 8.0
+   },
+   "Bukit Merah": {
+    "p5": 1.0,
+    "p50": 3.0,
+    "p95": 9.0
+   },
+   "Bukit Panjang": {
+    "p5": 1.0,
+    "p50": 1.0,
+    "p95": 5.0
+   },
+   "Bukit Timah": {
+    "p5": 20.0,
+    "p50": 23.0,
+    "p95": 25.0
+   },
+   "Central Area": {
+    "p5": 18.0,
+    "p50": 22.0,
+    "p95": 26.0
+   },
+   "Choa Chu Kang": {
+    "p5": 6.0,
+    "p50": 11.0,
+    "p95": 14.0
+   },
+   "Clementi": {
+    "p5": 2.0,
+    "p50": 4.0,
+    "p95": 5.0
+   },
+   "Geylang": {
+    "p5": 19.0,
+    "p50": 23.0,
+    "p95": 25.0
+   },
+   "Hougang": {
+    "p5": 21.0,
+    "p50": 24.0,
+    "p95": 25.0
+   },
+   "Jurong East": {
+    "p5": 12.0,
+    "p50": 14.0,
+    "p95": 16.0
+   },
+   "Jurong West": {
+    "p5": 10.0,
+    "p50": 13.0,
+    "p95": 17.0
+   },
+   "Kallang/Whampoa": {
+    "p5": 14.0,
+    "p50": 17.0,
+    "p95": 21.049999999999955
+   },
+   "Marine Parade": {
+    "p5": 4.0,
+    "p50": 9.0,
+    "p95": 12.0
+   },
+   "Pasir Ris": {
+    "p5": 14.0,
+    "p50": 18.0,
+    "p95": 22.049999999999955
+   },
+   "Punggol": {
+    "p5": 2.0,
+    "p50": 4.0,
+    "p95": 8.0
+   },
+   "Queenstown": {
+    "p5": 1.0,
+    "p50": 3.0,
+    "p95": 8.0
+   },
+   "Sembawang": {
+    "p5": 5.0,
+    "p50": 8.0,
+    "p95": 11.0
+   },
+   "Sengkang": {
+    "p5": 5.0,
+    "p50": 8.0,
+    "p95": 10.0
+   },
+   "Serangoon": {
+    "p5": 25.0,
+    "p50": 26.0,
+    "p95": 27.0
+   },
+   "Tampines": {
+    "p5": 17.0,
+    "p50": 19.0,
+    "p95": 21.0
+   },
+   "Tengah": {
+    "p5": 25.0,
+    "p50": 27.0,
+    "p95": 27.0
+   },
+   "Toa Payoh": {
+    "p5": 13.0,
+    "p50": 16.0,
+    "p95": 20.0
+   },
+   "Woodlands": {
+    "p5": 12.0,
+    "p50": 15.0,
+    "p95": 17.0
+   },
+   "Yishun": {
+    "p5": 15.0,
+    "p50": 19.0,
+    "p95": 22.0
+   }
+  },
+  "mc_draws": 2000,
+  "dirichlet_concentration": 40
+ },
+ "alpha_sensitivity": {
+  "0.0": {
+   "block_spearman": 0.9994403171084608,
+   "town_spearman": 0.995115995115995,
+   "max_town_shift": 0.5657985113947603
+  },
+  "1.0": {
+   "block_spearman": 0.9997479167902418,
+   "town_spearman": 0.9981684981684981,
+   "max_town_shift": 0.3670036097381626
+  }
+ }
+}

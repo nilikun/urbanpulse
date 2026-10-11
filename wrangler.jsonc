@@ -1,0 +1,11 @@
+// Cloudflare Workers static-assets deployment of the website in ./web
+// Deploy:  npx wrangler deploy
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "urban-resilience-index",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./web",
+    "not_found_handling": "404-page"
+  }
+}

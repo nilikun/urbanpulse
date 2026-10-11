@@ -1,0 +1,11 @@
+# raw and intermediate data are re-downloaded by the pipeline
+data/raw/
+data/satellite/
+data/processed/*.gpkg
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+node_modules/
+.wrangler/
+.DS_Store
+Thumbs.db

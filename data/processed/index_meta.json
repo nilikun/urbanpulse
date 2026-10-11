@@ -1,0 +1,181 @@
+{
+ "wbgt": {
+  "stations": 27,
+  "days": 92,
+  "threshold": 31.0,
+  "station_hours": {
+   "Upper Changi Road North": 25.5,
+   "Woodlands Street 13": 123.0,
+   "Old Chua Chu Kang Road": 122.0,
+   "Stadium Road": 177.8,
+   "Bishan Street": 140.8,
+   "Bedok North Street 2": 96.0,
+   "West Coast Road": 77.2,
+   "Jurong West Street 93": 123.5,
+   "Mandai Wildlife Reserve": 242.7,
+   "Sakra Road": 168.8,
+   "Tuas Terminal Gateway": 6.0,
+   "Choa Chu Kang Stadium": 69.0,
+   "Yio Chu Kang Stadium": 91.5,
+   "Sentosa Palawan Green": 224.0,
+   "Punggol North": 151.8,
+   "Upper Pickering Street": 123.2,
+   "MacRitchie Reservoir": 154.7,
+   "Jalan Bahar": 85.1,
+   "Marina Barrage": 234.0,
+   "Pasir Ris Walk": 70.7,
+   "Tampines Walk": 42.0,
+   "Evans Road": 65.5,
+   "Outward Bound Singapore(Pulau ubin)": 217.3,
+   "Bukit Batok Street 22": 85.8,
+   "Taman Jurong Greens": 120.8,
+   "Sengkang East Avenue": 111.5,
+   "Bukit Timah(West)": 111.5
+  }
+ },
+ "network": {
+  "nodes": 750530,
+  "edges": 845501,
+  "giant_nodes": 652706,
+  "km": 16087,
+  "covered_km": 701,
+  "shaded_share": 0.388,
+  "osm_timestamp": "2026-10-09T23:00:00Z"
+ },
+ "heat_penalty_alpha": 0.5,
+ "redundant_pairs_rho_gt_0.8": [],
+ "indicators": [
+  {
+   "key": "lst_anom",
+   "pillar": "heat",
+   "label": "Surface heat within 100 m (Landsat 8/9, 2021-25)",
+   "unit": "degC vs island median",
+   "higher_is_better": false,
+   "source": "USGS Landsat C2 L2 via Planetary Computer",
+   "confidence": "high"
+  },
+  {
+   "key": "canopy200",
+   "pillar": "shade",
+   "label": "Tree canopy within 200 m (NDVI > 0.6)",
+   "unit": "% of land",
+   "higher_is_better": true,
+   "source": "Copernicus Sentinel-2 L2A 2024-25",
+   "confidence": "medium"
+  },
+  {
+   "key": "route_shade400",
+   "pillar": "shade",
+   "label": "Shaded share of walkways within 400 m",
+   "unit": "% of length",
+   "higher_is_better": true,
+   "source": "OSM covered ways + Sentinel-2 canopy",
+   "confidence": "medium"
+  },
+  {
+   "key": "park_walk",
+   "pillar": "green",
+   "label": "Walk to nearest park",
+   "unit": "m (network)",
+   "higher_is_better": false,
+   "source": "NParks parks and nature reserves + OSM",
+   "confidence": "high"
+  },
+  {
+   "key": "park_area800",
+   "pillar": "green",
+   "label": "Park area within 800 m (10-min walk)",
+   "unit": "ha",
+   "higher_is_better": true,
+   "source": "NParks parks and nature reserves",
+   "confidence": "high"
+  },
+  {
+   "key": "blue_dist",
+   "pillar": "green",
+   "label": "Distance to park connector or waterbody",
+   "unit": "m",
+   "higher_is_better": false,
+   "source": "NParks Park Connector Loop, URA waterbody, PUB ABC Waters",
+   "confidence": "high"
+  },
+  {
+   "key": "gardens400",
+   "pillar": "community",
+   "label": "Community in Bloom gardens within 400 m",
+   "unit": "count",
+   "higher_is_better": true,
+   "source": "NParks Community in Bloom (proxy until resident reports exist)",
+   "confidence": "low"
+  },
+  {
+   "key": "walk_aac",
+   "pillar": "access",
+   "label": "Shaded walk to eldercare / AAC",
+   "unit": "m (heat-adjusted)",
+   "higher_is_better": false,
+   "source": "MOH eldercare services + OSM",
+   "confidence": "high"
+  },
+  {
+   "key": "walk_clinic",
+   "pillar": "access",
+   "label": "Shaded walk to CHAS clinic",
+   "unit": "m (heat-adjusted)",
+   "higher_is_better": false,
+   "source": "MOH CHAS clinics + OSM",
+   "confidence": "high"
+  },
+  {
+   "key": "walk_hawker",
+   "pillar": "access",
+   "label": "Shaded walk to hawker centre",
+   "unit": "m (heat-adjusted)",
+   "higher_is_better": false,
+   "source": "NEA hawker centres + OSM",
+   "confidence": "high"
+  },
+  {
+   "key": "walk_mrt",
+   "pillar": "access",
+   "label": "Shaded walk to MRT exit",
+   "unit": "m (heat-adjusted)",
+   "higher_is_better": false,
+   "source": "LTA MRT station exits + OSM",
+   "confidence": "high"
+  },
+  {
+   "key": "walk_bus",
+   "pillar": "access",
+   "label": "Shaded walk to bus stop",
+   "unit": "m (heat-adjusted)",
+   "higher_is_better": false,
+   "source": "LTA bus stops + OSM",
+   "confidence": "high"
+  },
+  {
+   "key": "flood_dist",
+   "pillar": "flood",
+   "label": "Distance to a PUB flood-prone location",
+   "unit": "m",
+   "higher_is_better": true,
+   "source": "PUB list of flood-prone areas, Nov 2025 (geocoded)",
+   "confidence": "medium"
+  }
+ ],
+ "context_layers": {
+  "wbgt_hours": "Hours at WBGT >= 31 degC, Mar-May 2026 (27 NEA stations, interpolated)",
+  "lst_anom_1990s": "Surface heat within 100 m, Landsat 5 1988-97",
+  "lst_abs": "Median surface temperature 2021-25, ~10:30 local time (degC)"
+ },
+ "wbgt_vs_lst_spearman": -0.05012770250381986,
+ "weights": {
+  "heat": 25,
+  "shade": 20,
+  "green": 15,
+  "community": 15,
+  "access": 15,
+  "flood": 10
+ },
+ "island_inclusion_gap": 17.488341530228162
+}

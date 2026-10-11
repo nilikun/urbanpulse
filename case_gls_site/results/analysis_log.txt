@@ -1,0 +1,22 @@
+n=  0  P10 -0.61M  P50  2.13M  P90  8.32M  sig_tau 0.54
+n=  1  P10  0.76M  P50  2.91M  P90  6.37M  sig_tau 0.29
+n=  2  P10  1.05M  P50  3.06M  P90  5.99M  sig_tau 0.25
+n=  3  P10  1.15M  P50  2.99M  P90  5.72M  sig_tau 0.24
+n=  5  P10  1.29M  P50  3.04M  P90  5.55M  sig_tau 0.22
+n=  8  P10  1.38M  P50  3.10M  P90  5.58M  sig_tau 0.21
+n= 12  P10  1.36M  P50  3.08M  P90  5.55M  sig_tau 0.21
+n= 20  P10  1.43M  P50  3.09M  P90  5.36M  sig_tau 0.21
+n= 30  P10  1.44M  P50  3.13M  P90  5.29M  sig_tau 0.20
+n= 50  P10  1.49M  P50  3.15M  P90  5.38M  sig_tau 0.20
+sensitivity {'base': 2100243.299149869, 'rows': [{'label': 'Sale-premium effect (0.3x to 2x)', 'lo': 2050715.1733642735, 'hi': 2170997.764557861}, {'label': 'Maintenance cost (-30% to +50%)', 'lo': 1714612.3136395435, 'hi': 2742961.6083337436}, {'label': 'Capex (-20% to +30%)', 'lo': 2010582.9600749216, 'hi': 2234733.8077622876}, {'label': 'SLL step-down (2.5 to 10 bps)', 'lo': 1931834.651446512, 'hi': 2437060.594556582}, {'label': 'Farm rent (S$11 to S$24/m2/yr)', 'lo': 2044908.7925877427, 'hi': 2224745.9389146534}]}
+AHP Balanced (default)   CR=0.001  Heat:0.30 Shade:0.16 Green-blue:0.16 Community:0.16 Access:0.16 Flood:0.08
+AHP Senior / resident    CR=0.006  Heat:0.24 Shade:0.24 Green-blue:0.08 Community:0.14 Access:0.24 Flood:0.05
+AHP Planner              CR=0.002  Heat:0.23 Shade:0.12 Green-blue:0.23 Community:0.07 Access:0.12 Flood:0.23
+AHP Developer / lender   CR=0.003  Heat:0.15 Shade:0.27 Green-blue:0.08 Community:0.27 Access:0.08 Flood:0.15
+value per project vs showcase 2340508.9030664526 client ROI 9.741339854368178 rev [378000.0, 1156000.0, 2436000.0, 4088000.0, 6258000.0]
+Compliance-minimum {'p10': -1.1, 'p50': 1.75, 'p90': 8.0, 'mean': 2.84}
+Typical showcase {'p10': -2.99, 'p50': 0.1, 'p90': 6.35, 'mean': 1.11}
+Index-guided design, no MRV {'p10': -0.8, 'p50': 2.04, 'p90': 8.33, 'mean': 3.14}
+Index-guided design + MRV {'p10': -0.62, 'p50': 2.22, 'p90': 8.52, 'mean': 3.33}
+uplift_vs_showcase {'p10': 1.61, 'p50': 2.14, 'p90': 2.92, 'prob_positive': 1.0}
+uplift_vs_compliance {'p10': 0.2, 'p50': 0.48, 'p90': 0.79, 'prob_positive': 0.9901}

@@ -62,13 +62,158 @@ async function getJSON(p) { const r = await fetch(p); if (!r.ok) throw new Error
 function chrome() {
   $$(".rail-ctrl button").forEach((b) => b.addEventListener("click", () => {
     const r = document.getElementById(b.dataset.rail);
-    r.scrollBy({ left: Number(b.dataset.dir) * (r.querySelector(".card")?.offsetWidth + 20 || 340), behavior: "smooth" });
+    r.scrollBy({ left: Number(b.dataset.dir) * ((r.firstElementChild?.offsetWidth || 320) + 18), behavior: "smooth" });
   }));
-  const links = $$(".nav ul a");
+  // nav + chapter rail highlight, chapter entrance (IntersectionObserver: no layout reads on scroll)
+  const links = $$(".nav ul a"), dots = $$(".rail-nav a");
   const io = new IntersectionObserver((es) => es.forEach((e) => {
-    if (e.isIntersecting) links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id));
+    if (!e.isIntersecting) return;
+    const id = "#" + e.target.id;
+    links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === id));
+    dots.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === id));
   }), { rootMargin: "-45% 0px -50% 0px" });
   $$("section[id], header[id]").forEach((s) => io.observe(s));
+  const rv = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); rv.unobserve(e.target); } }), { threshold: 0.08 });
+  $$(".chapter").forEach((s) => rv.observe(s));
+  // figure zoom
+  const dlg = $("#zoom");
+  $$(".figure img").forEach((img) => img.addEventListener("click", (e) => {
+    e.preventDefault();
+    $("img", dlg).src = img.src; $("img", dlg).alt = img.alt;
+    $("p", dlg).innerHTML = img.closest("figure").querySelector("figcaption")?.innerHTML || "";
+    dlg.showModal();
+  }));
+  $$(".figure a").forEach((a) => a.addEventListener("click", (e) => e.preventDefault()));
+  dlg.addEventListener("click", () => dlg.close());
+  pins();
+}
+
+// ------------------------------------------------------------------ pinned horizontal sequences
+// Layout is measured once (and again on resize); the scroll handler only reads scrollY and writes
+// transforms, so it never forces a reflow. Snap markers make each panel a resting point.
+function pins() {
+  const P = $$(".hpin").map((el) => ({ el, track: $(".hpin-track", el), bar: $(".hpin-bar i", el), cur: $(".hpin-count .cur", el),
+    items: [...$(".hpin-track", el).children], idx: -1 }));
+  const bar = $("#progress");
+  const off = () => matchMedia("(max-width: 760px), (prefers-reduced-motion: reduce)").matches;
+  let docH = 1;
+  function setActive(p, i) {
+    if (i === p.idx) return;
+    p.idx = i;
+    p.items.forEach((x, j) => x.classList.toggle("on", j === i));
+    if (p.cur) p.cur.textContent = String(i + 1).padStart(2, "0");
+  }
+  function measure() {
+    P.forEach((p) => {
+      $$(".snapmark", p.el).forEach((m) => m.remove());
+      if (off()) { p.el.style.height = ""; p.max = 0; setActive(p, 0); return; }
+      const vw = document.documentElement.clientWidth, vh = innerHeight - 62;
+      const cs = getComputedStyle(p.track), padR = parseFloat(cs.paddingRight);
+      const x0 = p.items[0].offsetLeft, last = p.items[p.items.length - 1];
+      p.max = Math.max(0, last.offsetLeft + last.offsetWidth + padR - vw);      // stop when the last item is fully in view
+      p.el.style.height = (p.max + vh + 62) + "px";
+      p.top = p.el.getBoundingClientRect().top + scrollY - 62;
+      // one resting point per item: where it reaches the left margin (capped at the end)
+      p.stops = [...new Set(p.items.map((x) => Math.round(Math.min(p.max, x.offsetLeft - x0))))];
+      p.stops.forEach((y) => { const m = document.createElement("i"); m.className = "snapmark"; m.style.top = y + "px"; p.el.appendChild(m); });
+    });
+    docH = document.documentElement.scrollHeight - innerHeight;
+    update();
+  }
+  let ticking = false;
+  function update() {
+    ticking = false;
+    const y = scrollY;
+    bar.style.transform = `scaleX(${Math.min(1, y / docH)})`;
+    let inPin = false;
+    P.forEach((p) => {
+      if (!p.max) return;
+      const d = Math.min(p.max, Math.max(0, y - p.top));
+      inPin = inPin || (y > p.top - 40 && y < p.top + p.max + 40);
+      p.track.style.transform = `translate3d(${(-d).toFixed(1)}px,0,0)`;
+      if (p.bar) p.bar.style.transform = `scaleX(${d / p.max})`;
+      // active item: the last one whose resting point has been reached (half-way rule)
+      let i = 0;
+      p.items.forEach((x, j) => { if (d >= Math.min(p.max, x.offsetLeft - p.items[0].offsetLeft) - (p.items[1] ? (p.items[1].offsetLeft - p.items[0].offsetLeft) / 2 : 0)) i = j; });
+      setActive(p, d >= p.max - 2 && p.items.length > p.stops.length ? p.items.length - 1 : i);
+    });
+    document.body.classList.toggle("in-pin", inPin);
+  }
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  let rt; const re = () => { clearTimeout(rt); rt = setTimeout(measure, 120); };
+  addEventListener("resize", re);
+  new ResizeObserver(re).observe(document.body);
+  measure();
+  // native swipe on phones: mark the panel in view
+  P.forEach((p) => {
+    const vio = new IntersectionObserver((es) => es.forEach((e) => { if (off() && e.isIntersecting) setActive(p, p.items.indexOf(e.target)); }), { root: p.track, threshold: 0.6 });
+    p.items.forEach((x) => vio.observe(x));
+  });
+}
+
+// ------------------------------------------------------------------ highlight mini-charts (drawn from the same data as the figures)
+function hookCharts(towns, an, cs) {
+  const G = "#1f7a52", GL = "#8cc9a8", GX = "#dcefe4", GR = "#c9d3cc", INK = "#111a15";
+  const W = 520, put = (id, h, body) => { const el = document.getElementById(id); if (el) el.innerHTML = `<svg viewBox="0 0 ${W} ${h}" role="img">${body}</svg>`; };
+
+  // 01 inclusion gap: 10 largest gaps, Bedok in green
+  const t = [...towns].sort((a, b) => b.inclusion_gap - a.inclusion_gap).slice(0, 10), H1 = 30 + t.length * 30;
+  const x1 = (v) => 120 + v / 26 * (W - 170);
+  put("hc-gap", H1, `<text class="ttl" x="0" y="12">Inclusion gap, 10 largest towns (points)</text>` + t.map((d, i) => {
+    const y = 30 + i * 30, c = d.town === "Bedok" ? G : GR;
+    return `<text x="112" y="${y + 13}" text-anchor="end">${d.town}</text><rect class="grow" x="120" y="${y}" width="${x1(d.inclusion_gap) - 120}" height="18" fill="${c}" style="transition-delay:${i * 50}ms"/>
+      <text class="fade" x="${x1(d.inclusion_gap) + 6}" y="${y + 13}" style="fill:${d.town === "Bedok" ? G : "#8a918c"};font-weight:${d.town === "Bedok" ? 600 : 400}">${d.inclusion_gap.toFixed(0)}</text>`;
+  }).join(""));
+
+  // 02 canopy partial dependence with model band
+  const p = an.heat_drivers.pdp_canopy, H2 = 300, xs = (v) => 40 + (v - p.x[0]) / (p.x.at(-1) - p.x[0]) * (W - 60);
+  const lo = Math.min(...p.lo), hi = Math.max(...p.hi, 0), ys = (v) => 30 + (hi - v) / (hi - lo) * (H2 - 70);
+  const band = p.x.map((x, i) => `${xs(x)},${ys(p.hi[i])}`).join(" ") + " " + p.x.map((x, i) => `${xs(x)},${ys(p.lo[i])}`).reverse().join(" ");
+  const line = "M" + p.x.map((x, i) => `${xs(x).toFixed(1)},${ys(p.y[i]).toFixed(1)}`).join("L");
+  put("hc-canopy", H2, `<text class="ttl" x="0" y="12">Predicted change in surface heat (°C)</text>
+    ${[0, -0.5, -1, -1.5, -2].filter((v) => v >= lo).map((v) => `<line x1="40" x2="${W - 20}" y1="${ys(v)}" y2="${ys(v)}" stroke="#e1e7e3"/><text x="32" y="${ys(v) + 4}" text-anchor="end">${v}</text>`).join("")}
+    <polygon class="fade" points="${band}" fill="${GX}" style="transition-delay:0.2s"/>
+    <path class="draw" d="${line}" fill="none" stroke="${G}" stroke-width="2.5"/>
+    <text x="40" y="${H2 - 12}">0%</text><text x="${W - 20}" y="${H2 - 12}" text-anchor="end">${p.x.at(-1).toFixed(0)}% tree canopy within 200 m</text>
+    <text class="fade" x="${W - 20}" y="${ys(p.y.at(-1)) - 14}" text-anchor="end" style="fill:${G};font-weight:600">band: 5–95% across 27 held-out-town models</text>`);
+
+  // 03 value lens intervals
+  const ef = Object.entries(an.value_lens.effects).map(([k, e]) => ({ k: k.replace("degC", "°C"), ...e })), H3 = 50 + ef.length * 50;
+  const vlo = Math.min(...ef.map((e) => e.lo)) - 0.05, vhi = Math.max(...ef.map((e) => e.hi)) + 0.05, xv = (v) => 175 + (v - vlo) / (vhi - vlo) * (W - 185);
+  put("hc-value", H3, `<text class="ttl" x="0" y="12">% change in HDB resale price (95% and 50% CI)</text>
+    <line x1="${xv(0)}" x2="${xv(0)}" y1="24" y2="${H3 - 6}" stroke="#8a918c"/><text x="${xv(0)}" y="${H3 + 10}" text-anchor="middle">0% (no premium)</text>` + ef.map((e, i) => `<text class="fade" x="${xv(e.hi) + 8}" y="${52 + i * 50}" style="fill:${/canopy/.test(e.k) ? "#1f7a52" : "#8a918c"}">${e.pct > 0 ? "+" : ""}${e.pct.toFixed(2)}%</text>`).join("") +
+    ef.map((e, i) => { const y = 48 + i * 50, lead = /canopy/.test(e.k), c = lead ? G : "#7d8580", cl = lead ? GX : "#e9ece9";
+      return `<text x="167" y="${y + 4}" text-anchor="end" style="fill:${lead ? G : INK};font-weight:${lead ? 600 : 400}">${e.k}</text>
+      <rect class="grow" x="${xv(e.lo)}" y="${y - 10}" width="${xv(e.hi) - xv(e.lo)}" height="20" fill="${cl}" style="transition-delay:${i * 80}ms"/>
+      <rect class="grow" x="${xv(e.lo50)}" y="${y - 4}" width="${Math.max(2, xv(e.hi50) - xv(e.lo50))}" height="8" fill="${c}" style="transition-delay:${i * 80 + 100}ms"/>
+      <circle class="fade" cx="${xv(e.pct)}" cy="${y}" r="4.5" fill="#fff" stroke="${c}" stroke-width="2"/>`; }).join(""));
+
+  // 04 three designs: 30-yr cost
+  const D = cs.designs, rows = [["Compliance minimum", D["Compliance-minimum"].lcc], ["Typical showcase", D["Typical showcase"].lcc], ["Index-guided", D["Index-guided design"].lcc]];
+  const H4 = 200, xc = (v) => 140 + v / 5.2e6 * (W - 200);
+  put("hc-cost", H4, `<text class="ttl" x="0" y="12">30-year greenery life-cycle cost, S$M (GnPR 3.5 in all three)</text>` + rows.map(([n, v], i) => {
+    const y = 40 + i * 48, g = i === 2;
+    return `<text x="130" y="${y + 19}" text-anchor="end" style="fill:${g ? G : INK};font-weight:${g ? 600 : 400}">${n}</text>
+      <rect class="grow" x="140" y="${y}" width="${xc(v) - 140}" height="28" fill="${g ? G : GR}" style="transition-delay:${i * 120}ms"/>
+      <text class="fade" x="${xc(v) + 8}" y="${y + 19}" style="fill:${g ? G : "#4a524d"};font-weight:${g ? 600 : 400}">${(v / 1e6).toFixed(2)}</text>`;
+  }).join("") + `<text class="fade" x="140" y="${H4 - 6}" style="fill:${G}">upkeep S$35 → S$16 per unit per month</text>`);
+
+  // 05 verification flywheel
+  const f = cs.flywheel, H5 = 300, xf = (n) => 50 + Math.log1p(n) / Math.log1p(50) * (W - 80);
+  const fl = Math.min(...f.map((d) => d.p10)) / 1e6 - 0.4, fh = Math.max(...f.map((d) => d.p90)) / 1e6, yf = (v) => 30 + (fh - v) / (fh - fl) * (H5 - 70);
+  const fband = f.map((d) => `${xf(d.n)},${yf(d.p90 / 1e6)}`).join(" ") + " " + f.map((d) => `${xf(d.n)},${yf(d.p10 / 1e6)}`).reverse().join(" ");
+  const p10 = "M" + f.map((d) => `${xf(d.n).toFixed(1)},${yf(d.p10 / 1e6).toFixed(1)}`).join("L");
+  const p50 = "M" + f.map((d) => `${xf(d.n).toFixed(1)},${yf(d.p50 / 1e6).toFixed(1)}`).join("L");
+  const d8 = f.find((d) => d.n === 8);
+  put("hc-moat", H5, `<text class="ttl" x="0" y="12">Value per site after fees, S$M</text>
+    ${[0, 2, 4, 6, 8].map((v) => `<line x1="50" x2="${W - 30}" y1="${yf(v)}" y2="${yf(v)}" stroke="${v === 0 ? "#8a918c" : "#e1e7e3"}"/><text x="42" y="${yf(v) + 4}" text-anchor="end">${v}</text>`).join("")}
+    <polygon class="fade" points="${fband}" fill="${GX}" style="transition-delay:0.1s"/>
+    <path class="draw" d="${p50}" fill="none" stroke="${GL}" stroke-width="1.6"/>
+    <path class="draw" d="${p10}" fill="none" stroke="${G}" stroke-width="2.8"/>
+    <circle class="fade" cx="${xf(8)}" cy="${yf(d8.p10 / 1e6)}" r="5" fill="#fff" stroke="${G}" stroke-width="2"/>
+    <text class="fade" x="${xf(8) + 10}" y="${yf(d8.p10 / 1e6) + 22}" style="fill:${G};font-weight:600">P10 after 8 sites: +${(d8.p10 / 1e6).toFixed(1)}</text>
+    ${[0, 1, 2, 5, 10, 20, 50].map((n) => `<text x="${xf(n)}" y="${H5 - 12}" text-anchor="middle">${n}</text>`).join("")}
+    <text x="${W - 30}" y="${H5 + 6}" text-anchor="end">verified sites in the evidence library</text>`);
 }
 
 // ------------------------------------------------------------------ pillars + five tests
@@ -428,6 +573,7 @@ async function credits() {
   ]);
   state.blocks = blocks;
   pillarCards(meta); targets(analysis); valueChart(analysis); caseStudy(cs);
+  hookCharts(await getJSON("data/towns.json"), analysis, cs);
   $("#lstrmse").textContent = meta.lst_now_validation.rmse_c.toFixed(2); $("#m-rmse").textContent = meta.lst_now_validation.rmse_c.toFixed(2);
   $("#m-scenes").textContent = `${meta.lst_now_scenes} + ${meta.lst_then_scenes}`;
   atlas(meta, analysis); tweaks(tw, tbcsv);

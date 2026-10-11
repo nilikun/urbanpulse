@@ -70,9 +70,9 @@ def outlines():
 
 
 def mapframe(ax, land, pa=None, xlim=(X0, X1 - 2000), ylim=(Y0 + 4000, Y1 - 2500)):
-    gpd.GeoSeries([land]).plot(ax=ax, color="#eef1ee", edgecolor="none", zorder=0)
+    gpd.GeoSeries([land]).plot(ax=ax, color="white", edgecolor="#9fb0a5", lw=0.4, zorder=0)
     if pa is not None:
-        pa.boundary.plot(ax=ax, color="white", lw=0.35, zorder=3)
+        pa.boundary.plot(ax=ax, color="#dfe6e1", lw=0.3, zorder=0.5)
     ax.set_xlim(*xlim); ax.set_ylim(*ylim); ax.set_aspect("equal"); ax.axis("off")
 
 

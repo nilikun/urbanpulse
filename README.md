@@ -1,7 +1,7 @@
 <p align="center"><img src="web/assets/img/brand/skyline.png" width="360" alt=""></p>
 
 <h1 align="center">UrbanPulse</h1>
-<p align="center"><b>Who does a plan cool?</b><br>A block-level heat-resilience and inclusion index for Singapore's public housing, with a community-data loop and a business model that turns mandatory greenery into verifiable returns.</p>
+<p align="center"><b>Greenery that proves who it cools.</b><br>A block-level heat-resilience and inclusion index for Singapore's public housing, with a community-data loop and a business model that turns mandatory greenery into verifiable returns.</p>
 
 <p align="center"><a href="docs/concept-brief.md">Concept brief</a> · <a href="docs/METHODS.md">Methods</a> · <a href="docs/DATA.md">Data</a> · <a href="web/">Website</a></p>
 

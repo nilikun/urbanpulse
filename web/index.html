@@ -16,6 +16,16 @@
 <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+<script>document.documentElement.classList.add("js")</script>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<nav class="rail-nav" aria-label="Chapters">
+  <a href="#top"><span>Start</span></a><a href="#highlights"><span>Highlights</span></a><a href="#problem"><span>Problem</span></a>
+  <a href="#proposal"><span>Proposal</span></a><a href="#flow"><span>7 steps</span></a><a href="#index"><span>Index</span></a>
+  <a href="#atlas"><span>Atlas</span></a><a href="#heat"><span>Heat history</span></a><a href="#benchmark"><span>Benchmark</span></a>
+  <a href="#tweaks"><span>Tweaks</span></a><a href="#community"><span>Community</span></a><a href="#value"><span>Business</span></a>
+  <a href="#method"><span>Method</span></a>
+</nav>
+<dialog class="zoom" id="zoom"><img alt=""><p></p></dialog>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -34,7 +44,7 @@
   <div class="wrap">
     <a class="brand" href="#top" aria-label="UrbanPulse home"><svg><use href="#logo"/></svg><span><b>UrbanPulse</b><small>Urban Resilience Index · SG</small></span></a>
     <ul>
-      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#highlights">Highlights</a></li>
       <li><a href="#problem">Problem</a></li>
       <li><a href="#proposal">Proposal</a></li>
       <li><a href="#atlas">Atlas</a></li>
@@ -52,10 +62,10 @@
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <div class="eyebrow">Heat resilience · Inclusion · Green finance</div>
-        <h1>Who does a plan <em>cool</em>?</h1>
-        <p class="lede">UrbanPulse scores every HDB block in Singapore on who it cools, proves what greenery delivers after handover, and turns mandatory greenery into returns developers can bank.</p>
-        <div class="cta"><a class="btn solid" href="#atlas">Explore the atlas</a><a class="btn" href="#abstract">Read the abstract</a></div>
+        <div class="eyebrow">UrbanPulse · Singapore</div>
+        <h1>Greenery that proves <em>who it cools</em>.</h1>
+        <p class="lede">One score for every HDB block. A loop that lets residents verify what greenery delivers. A pass that turns mandatory greenery into returns developers can bank.</p>
+        <div class="cta"><a class="btn solid" href="#highlights">See the five findings</a><a class="btn" href="#atlas">Explore the atlas</a></div>
       </div>
       <div class="hero-art"><img src="assets/img/brand/skyline.png" alt="" width="1600" height="1043"></div>
     </div>
@@ -88,23 +98,46 @@
   </div>
 </header>
 
-<!-- ================================================================ ABSTRACT (hook) -->
-<section class="chapter" id="abstract">
-  <div class="wrap">
-    <div class="abstract">
-      <div class="label">Abstract</div>
-      <div class="body">
-        <p>URA requires new private flat and condominium developments to provide greenery equal to <b>30–40% of their site area</b>. Yet no one can say <span class="hl">who that greenery cools</span>. In a recent study of 400+ HDB flats, about half were hotter inside than outdoors. The residents with least protection, seniors and rental households, are the people today's planning tools do not see.</p>
-        <p>UrbanPulse scores <b>all 10,749 HDB blocks</b> on six pillars built from satellite heat, tree canopy, a shade-mapped walking network and official open data, weighted by where seniors and rental households live. It finds that <span class="hl">town averages hide gaps of up to 24 points</span> between typical and worst-served blocks. Tree canopy is the strongest plannable lever: +10 percentage points goes with about 0.5 °C cooler surfaces. And checking inclusion changes which design tweaks a planner should pick.</p>
-        <p>Resale prices do not reward cooling yet, so its value has to be proven. UrbanPulse closes that loop after handover: residents and Active Ageing Centres earn credits for verified outcomes, led by kilograms harvested on rooftop farms. That evidence lets developers meet sustainability-linked loan targets. On a 2023 Woodlands GLS site under identical URA rules, the index-guided design <b>cuts 30-year greenery cost by 41%</b> and adds a <b>median S$2.1M per site</b>.</p>
-      </div>
+<!-- ================================================================ HIGHLIGHTS (pinned, horizontal) -->
+<section class="hpin" id="highlights">
+  <div class="hpin-sticky">
+    <div class="wrap hpin-head">
+      <div><div class="kicker"><span class="n">00</span>Highlights</div><h2>Five things <em>10,749 blocks</em> told us.</h2></div>
+      <div class="hpin-count"><b class="cur">01</b> / 05</div>
     </div>
-    <div class="sells">
-      <div class="sell"><span class="who">For residents</span><b>898</b><p>seniors and rental households within 200 m of a new public cool refuge, at one GLS site.</p></div>
-      <div class="sell"><span class="who">For planners</span><b>24 pts</b><p>the largest inclusion gap hidden behind a town average (Bedok). Every plan now reports it.</p></div>
-      <div class="sell"><span class="who">For developers</span><b>−41%</b><p>30-year greenery cost, same URA compliance; upkeep from S$35 to S$16 per unit a month.</p></div>
-      <div class="sell"><span class="who">For lenders</span><b>−0.6 → +1.4</b><p>bankable (P10) value per site, S$M, once 8 sites are verified. Verified data is the moat.</p></div>
+    <div class="hpin-track">
+      <article class="panel">
+        <div><div class="p-tag">01 · Inclusion</div><div class="p-big">24<small>points</small></div>
+          <h3>hidden inside <em>one town's average</em>.</h3>
+          <p>In Bedok, the typical block outscores its worst-served fifth by 24 points. A town average cannot show that, so every UrbanPulse plan reports the gap.</p></div>
+        <div class="p-chart" id="hc-gap"></div>
+      </article>
+      <article class="panel">
+        <div><div class="p-tag">02 · Cooling</div><div class="p-big">−0.5<small>°C</small></div>
+          <h3>for every <em>+10 points of tree canopy</em> within 200 m.</h3>
+          <p>Tree canopy is the strongest cooling lever a planner controls. The effect holds with town, paving, block height and age fixed, and across 27 models that each predict a town they never saw.</p></div>
+        <div class="p-chart" id="hc-canopy"></div>
+      </article>
+      <article class="panel">
+        <div><div class="p-tag">03 · Markets</div><div class="p-big">≤0<small>% premium</small></div>
+          <h3>Buyers don't pay for cooling yet. <em>Lenders can.</em></h3>
+          <p>Across 73,304 HDB resales, block-level canopy earns no price premium. UrbanPulse makes cooling bankable instead: verified outcomes unlock sustainability-linked loan step-downs.</p></div>
+        <div class="p-chart" id="hc-value"></div>
+      </article>
+      <article class="panel">
+        <div><div class="p-tag">04 · Developers</div><div class="p-big">−41<small>%</small></div>
+          <h3>30-year greenery cost, <em>same URA rules</em>.</h3>
+          <p>On a 2023 Woodlands GLS site, the index-guided design adds a median S$2.1M per site after fees, positive in all 20,000 simulations. It also puts 898 seniors and rental households within 200 m of a public cool refuge.</p></div>
+        <div class="p-chart" id="hc-cost"></div>
+      </article>
+      <article class="panel">
+        <div><div class="p-tag">05 · The moat</div><div class="p-big">+1.4<small>S$M</small></div>
+          <h3>bankable value per site <em>after 8 verified sites</em>.</h3>
+          <p>Unverified, a lender's cautious (P10) case is −S$0.6M per site. Each site residents verify narrows the forecast for the next. That evidence library is what a competitor cannot copy.</p></div>
+        <div class="p-chart" id="hc-moat"></div>
+      </article>
     </div>
+    <div class="wrap"><div class="hpin-bar"><i></i></div></div>
   </div>
 </section>
 
@@ -216,11 +249,17 @@
       </tbody>
     </table></div>
 
-    <div class="rail-head" style="margin-top:64px">
-      <div><h3>The whole flow · 7 steps, 1 loop</h3><p class="small muted" style="max-width:60ch">Each new town feeds the next through community data. "Here" notes what this repository implements.</p></div>
-      <div class="rail-ctrl"><button data-rail="steprail" data-dir="-1" aria-label="Previous">←</button><button data-rail="steprail" data-dir="1" aria-label="Next">→</button></div>
+  </div>
+</section>
+
+<!-- ================================================================ 03b FLOW (pinned, horizontal) -->
+<section class="hpin" id="flow">
+  <div class="hpin-sticky">
+    <div class="wrap hpin-head">
+      <div><div class="kicker"><span class="n">03b</span>The whole flow</div><h2>Seven steps, <em>one loop</em>.</h2></div>
+      <div class="hpin-count"><b class="cur">01</b> / 07</div>
     </div>
-    <div class="rail" id="steprail">
+    <div class="hpin-track">
       <article class="card step"><div class="tag">Step 01</div><h4>Integrate</h4><p>One live map of heat and felt heat, satellite heat history, greenery, flooding, buildings, mobility, seniors and access, all from open data.</p><div class="out">Here: 16 data.gov.sg datasets + the PUB flood list, 89 Landsat + 7 Sentinel-2 scenes, an OSM walk network.</div></article>
       <article class="card step"><div class="tag">Step 02</div><h4>Learn &amp; benchmark</h4><p>Score existing HDB towns down to block level, track how their heat changed, and turn the best performers into design targets.</p><div class="out">Here: 27 towns ranked; targets from the top-5 towns per indicator.</div></article>
       <article class="card step"><div class="tag">Step 03</div><h4>Score the scenario</h4><p>A planner or developer draws or uploads a scenario; the index scores it on all six pillars and runs the inclusion check.</p><div class="out">Fixed national reference, so a gain is a real move up the distribution.</div></article>
@@ -229,6 +268,7 @@
       <article class="card step new"><span class="badge">NEW</span><div class="tag">Step 06</div><h4>Keep it alive with the community</h4><p>After move-in, residents and AAC seniors earn credits for verified shade, green pockets and neighbour check-ins; actions and indoor readings feed back into step 2.</p><div class="out">The loop that turns a static index into a learning one.</div></article>
       <article class="card step"><div class="tag">Step 07</div><h4>Show the value</h4><p>A separate value lens shows resale effects of cooling and greening, kept outside the score, so seniors' homes are never marked down.</p><div class="out">Here: 73,304 resale transactions, 2024–2026.</div></article>
     </div>
+    <div class="wrap"><div class="hpin-bar"><i></i></div><p class="tiny muted" style="margin-top:10px">Each new town feeds the next through community data. "Here" notes what this repository implements.</p></div>
   </div>
 </section>
 
@@ -673,7 +713,7 @@ under-sampled spaces → bounty</div>
       <p>An independent academic research prototype on heat resilience, inclusion and green finance in Singapore's public housing. It is built from public data and is not affiliated with or endorsed by any agency, company or developer named on this page. Scores describe neighbourhood conditions; they are not property valuations or advice.</p>
       <p class="tiny muted">Code MIT · text and figures CC BY 4.0 · third-party data and photos under their own licences.</p>
     </div>
-    <div class="c-3"><h6>Explore</h6><ul><li><a href="#abstract">Abstract</a></li><li><a href="#atlas">Atlas</a></li><li><a href="#tweaks">Tweak engine</a></li><li><a href="#value">Business model</a></li></ul></div>
+    <div class="c-3"><h6>Explore</h6><ul><li><a href="#highlights">Highlights</a></li><li><a href="#atlas">Atlas</a></li><li><a href="#tweaks">Tweak engine</a></li><li><a href="#value">Business model</a></li></ul></div>
     <div class="c-3"><h6>Code</h6><ul><li><a href="https://github.com/nilikun/urbanpulse">GitHub repository</a></li><li><a href="https://github.com/nilikun/urbanpulse/blob/main/docs/METHODS.md">Methods</a></li><li><a href="https://github.com/nilikun/urbanpulse/blob/main/docs/concept-brief.md">Concept brief</a></li></ul></div>
   </div>
 </footer>

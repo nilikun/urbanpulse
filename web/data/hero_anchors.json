@@ -1,0 +1,32 @@
+{
+ "Bedok": {
+  "left": 72.55,
+  "top": 60.61,
+  "score": 54.5,
+  "gap": 24.3
+ },
+ "Tengah": {
+  "left": 28.71,
+  "top": 48.08,
+  "score": 33.3,
+  "gap": 7.0
+ },
+ "Woodlands": {
+  "left": 41.72,
+  "top": 14.87,
+  "score": 49.7,
+  "gap": 13.6
+ },
+ "Bukit Panjang": {
+  "left": 36.36,
+  "top": 38.43,
+  "score": 63.3,
+  "gap": 13.8
+ },
+ "Punggol": {
+  "left": 67.85,
+  "top": 30.13,
+  "score": 60.1,
+  "gap": 12.1
+ }
+}

@@ -3,52 +3,110 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Urban Resilience Index · Singapore</title>
-<meta name="description" content="A block-level index that scores every HDB block in Singapore on who it cools: six pillars from open satellite, OpenStreetMap and data.gov.sg data, an inclusion check, community-verified data and a project pass that turns mandatory greenery into measurable returns.">
-<meta property="og:title" content="Urban Resilience Index · Singapore">
-<meta property="og:description" content="Who does a plan cool? Scoring 10,749 HDB blocks on heat, shade, green-blue space, community, access and flooding.">
-<meta property="og:image" content="assets/img/maps/hero_heat.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g'%3E%3Cstop offset='0' stop-color='%230d366b'/%3E%3Cstop offset='.5' stop-color='%23f0efec'/%3E%3Cstop offset='1' stop-color='%23e34948'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3C/svg%3E">
+<title>UrbanPulse · Who does a plan cool?</title>
+<meta name="description" content="UrbanPulse scores every HDB block in Singapore on who it cools, verifies what greenery delivers through community data, and turns mandatory greenery into measurable returns for developers.">
+<meta property="og:title" content="UrbanPulse · Who does a plan cool?">
+<meta property="og:description" content="A block-level heat-resilience and inclusion index for 10,749 HDB blocks, with a community-data loop and a project pass for developers.">
+<meta property="og:image" content="assets/img/maps/hero_map.png">
+<link rel="icon" href="assets/img/brand/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8cc9a8"/><stop offset="1" stop-color="#1f7a52"/></linearGradient>
+    <symbol id="logo" viewBox="0 0 48 32">
+      <g fill="none" stroke="url(#lg)" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M5 23V14h6v9M11 23V6h7v17M18 23V11h6v12M24 23V16h5v7M29 23V8h6v15M35 23V14h5v9"/>
+        <path d="M14 10h1M14 13h1M14 16h1M31.5 12h1M31.5 15h1M31.5 18h1" stroke-width="1.2"/>
+        <path d="M1.5 27H15l2.6-5 3.2 9 3.4-12.5 2.7 8.5H46.5" stroke="#1f7a52" stroke-width="2"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
 <nav class="nav" aria-label="Sections">
   <div class="wrap">
-    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Urban Resilience Index</a>
+    <a class="brand" href="#top" aria-label="UrbanPulse home"><svg><use href="#logo"/></svg><span><b>UrbanPulse</b><small>Urban Resilience Index · SG</small></span></a>
     <ul>
+      <li><a href="#abstract">Abstract</a></li>
       <li><a href="#problem">Problem</a></li>
       <li><a href="#proposal">Proposal</a></li>
-      <li><a href="#index">Index</a></li>
       <li><a href="#atlas">Atlas</a></li>
       <li><a href="#tweaks">Tweaks</a></li>
       <li><a href="#community">Community</a></li>
-      <li><a href="#value">Value</a></li>
+      <li><a href="#value">Business</a></li>
       <li><a href="#method">Method</a></li>
     </ul>
-    <a class="gh" href="https://github.com/nilikun/urban-resilience-index" rel="noopener">Code &amp; data ↗</a>
+    <a class="btn" href="https://github.com/nilikun/urbanpulse" rel="noopener">GitHub ↗</a>
   </div>
 </nav>
 
 <!-- ================================================================ HERO -->
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="eyebrow">Singapore · SDG 11 · Heat resilience</div>
-    <h1>Who does a plan <em>cool</em>?</h1>
-    <p class="lede">Singapore's towns are getting hotter, yet the residents most at risk get the least protection. We built an index that scores every HDB block on who it cools, a community data loop that verifies what greenery actually delivers, and a project pass that turns mandatory greenery into measurable returns.</p>
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Heat resilience · Inclusion · Green finance</div>
+        <h1>Who does a plan <em>cool</em>?</h1>
+        <p class="lede">UrbanPulse scores every HDB block in Singapore on who it cools, proves what greenery delivers after handover, and turns mandatory greenery into returns developers can bank.</p>
+        <div class="cta"><a class="btn solid" href="#atlas">Explore the atlas</a><a class="btn" href="#abstract">Read the abstract</a></div>
+      </div>
+      <div class="hero-art"><img src="assets/img/brand/skyline.png" alt="" width="1600" height="1043"></div>
+    </div>
+
+    <div class="window" aria-label="Preview of the UrbanPulse atlas">
+      <div class="window-bar"><i></i><i></i><i></i><b>UrbanPulse</b><span>/ Atlas / Singapore, all HDB towns</span><span class="sp"><span class="chip">need-weighted</span><span class="chip">2021–25</span></span></div>
+      <div class="window-body">
+        <div class="window-legend">
+          <h6>Blocks scored</h6><div class="big num">10,749</div>
+          <h6>Block score</h6>
+          <div class="legend-bar"></div><div class="legend-lab"><span>less resilient</span><span>more</span></div>
+          <h6 style="margin-top:16px">Pillars · weight</h6>
+          <div class="row"><i style="background:var(--p-heat)"></i>Heat · 25</div>
+          <div class="row"><i style="background:var(--p-shade)"></i>Shade · 20</div>
+          <div class="row"><i style="background:var(--p-green)"></i>Green-blue · 15</div>
+          <div class="row"><i style="background:var(--p-community)"></i>Community · 15</div>
+          <div class="row"><i style="background:var(--p-access)"></i>Access · 15</div>
+          <div class="row"><i style="background:var(--p-flood)"></i>Flood · 10</div>
+        </div>
+        <div class="window-map" id="heromap"><img src="assets/img/maps/hero_map.png" alt="Map of Singapore with every HDB block coloured by its UrbanPulse score" width="2400" height="1273"></div>
+      </div>
+    </div>
+
     <div class="hero-stats">
-      <div><b class="num" data-count="10749">10,749</b><span>HDB blocks scored</span></div>
-      <div><b class="num" data-count="27">27</b><span>HDB towns benchmarked</span></div>
-      <div><b class="num" data-count="89">89</b><span>Landsat scenes, 1988–2025</span></div>
-      <div><b class="num" data-count="16087">16,087</b><span>km of walkways, shade-mapped</span></div>
+      <div><b class="num">10,749</b><span>HDB blocks scored (99.4%)</span></div>
+      <div><b class="num">27</b><span>towns benchmarked</span></div>
+      <div><b class="num">89</b><span>Landsat scenes, 1988–2025</span></div>
+      <div><b class="num">16,087 km</b><span>walkways mapped for shade</span></div>
     </div>
   </div>
-  <div class="hero-legend" aria-hidden="true">cooler<span class="bar"></span>hotter · surface heat 2021–25, white dots = HDB blocks</div>
 </header>
+
+<!-- ================================================================ ABSTRACT (hook) -->
+<section class="chapter" id="abstract">
+  <div class="wrap">
+    <div class="abstract">
+      <div class="label">Abstract</div>
+      <div class="body">
+        <p>URA requires new private flat and condominium developments to provide greenery equal to <b>30–40% of their site area</b>. Yet no one can say <span class="hl">who that greenery cools</span>. In a recent study of 400+ HDB flats, about half were hotter inside than outdoors. The residents with least protection, seniors and rental households, are the people today's planning tools do not see.</p>
+        <p>UrbanPulse scores <b>all 10,749 HDB blocks</b> on six pillars built from satellite heat, tree canopy, a shade-mapped walking network and official open data, weighted by where seniors and rental households live. It finds that <span class="hl">town averages hide gaps of up to 24 points</span> between typical and worst-served blocks. Tree canopy is the strongest plannable lever: +10 percentage points goes with about 0.5 °C cooler surfaces. And checking inclusion changes which design tweaks a planner should pick.</p>
+        <p>Resale prices do not reward cooling yet, so its value has to be proven. UrbanPulse closes that loop after handover: residents and Active Ageing Centres earn credits for verified outcomes, led by kilograms harvested on rooftop farms. That evidence lets developers meet sustainability-linked loan targets. On a 2023 Woodlands GLS site under identical URA rules, the index-guided design <b>cuts 30-year greenery cost by 41%</b> and adds a <b>median S$2.1M per site</b>.</p>
+      </div>
+    </div>
+    <div class="sells">
+      <div class="sell"><span class="who">For residents</span><b>898</b><p>seniors and rental households within 200 m of a new public cool refuge, at one GLS site.</p></div>
+      <div class="sell"><span class="who">For planners</span><b>24 pts</b><p>the largest inclusion gap hidden behind a town average (Bedok). Every plan now reports it.</p></div>
+      <div class="sell"><span class="who">For developers</span><b>−41%</b><p>30-year greenery cost, same URA compliance; upkeep from S$35 to S$16 per unit a month.</p></div>
+      <div class="sell"><span class="who">For lenders</span><b>−0.6 → +1.4</b><p>bankable (P10) value per site, S$M, once 8 sites are verified. Verified data is the moat.</p></div>
+    </div>
+  </div>
+</section>
 
 <!-- ================================================================ 01 PROBLEM -->
 <section class="chapter" id="problem">
@@ -56,11 +114,11 @@
     <div class="kicker"><span class="n">01</span>The problem</div>
     <div class="cols">
       <div class="c-7">
-        <h2>Planners can model wind and sun, but not who a plan cools.</h2>
-        <p class="intro">Singapore is getting hotter, and seniors, low-income households and rental-flat tenants are the least protected. Evidence on heat, greenery, flooding and vulnerability sits in separate datasets, often at planning-area level, so it is hard to see which past design choices worked for residents, or which vulnerable groups a new plan might leave out. Residents, who could help cool their neighbourhoods, have no role and no incentive.</p>
+        <h2>Planners can model wind and sun, but not <em>who</em> a plan cools.</h2>
+        <p class="intro">Singapore is getting hotter, and seniors, low-income households and rental-flat tenants are the least protected. Evidence on heat, greenery, flooding and vulnerability sits in separate datasets, often at planning-area level. That makes it hard to see which past design choices worked for residents, or which vulnerable groups a new plan might leave out. Residents, who could help cool their neighbourhoods, have no role and no incentive.</p>
       </div>
       <div class="c-5">
-        <figure class="figure photo" style="height:100%;min-height:300px">
+        <figure class="photo" style="height:100%;min-height:300px">
           <img src="assets/img/photos/tengah.jpg" alt="New HDB blocks under construction in Tengah, with bare ground and little shade" loading="lazy">
           <span class="credit">Tengah, 2024 · <a href="https://commons.wikimedia.org/wiki/File:Tengah_Singapore_HDB_20240529_150904.jpg">ZKang123</a>, CC BY-SA 4.0</span>
         </figure>
@@ -85,25 +143,25 @@
 </section>
 
 <!-- ================================================================ 02 GAPS -->
-<section class="chapter alt" id="gaps">
+<section class="chapter" id="gaps">
   <div class="wrap">
     <div class="kicker"><span class="n">02</span>Gaps in today's toolkit</div>
     <div class="rail-head">
       <div>
-        <h2>The physics is modelled well. The people layer is missing.</h2>
-        <p class="intro">Existing tools model the physical environment; what is missing is the people and equity layer, and a link between past design choices and outcomes.</p>
+        <h2>The physics is modelled well. The <em>people</em> layer is missing.</h2>
+        <p class="intro">Existing tools model the physical environment. What is missing is the people and equity layer, and a link between past design choices and outcomes.</p>
       </div>
       <div class="rail-ctrl"><button data-rail="gaprail" data-dir="-1" aria-label="Previous">←</button><button data-rail="gaprail" data-dir="1" aria-label="Next">→</button></div>
     </div>
     <div class="rail" id="gaprail">
-      <article class="card"><div class="tag">Gap 1</div><h4>Design tools model physics, not people</h4><p>HDB/A*STAR's Integrated Environmental Modeller (used for Tengah) simulates wind, sun and temperature; URA's cooling page does not mention elderly or vulnerable residents.</p><div class="foot"><a href="https://www.ura.gov.sg/land-planning/master-plan/master-plan-2025/themes/strengthening-urban-resilience/a-cool-city-in-a-warming-world/">URA Master Plan 2025: A Cool City</a></div></article>
-      <article class="card"><div class="tag">Gap 2</div><h4>Greenery rules count leaves, not who benefits</h4><p>Green Plot Ratio 3–4, tiered by plot ratio and location, not by heat or vulnerability.</p><div class="foot"><a href="https://www.ura.gov.sg/Corporate/Guidelines/Development-Control/Residential/Flats-Condominiums/Greenery">URA greenery requirements</a></div></article>
-      <article class="card"><div class="tag">Gap 3</div><h4>Liveability and heat are measured separately</h4><p>A 203-subzone liveability index has no heat; heat-vulnerability maps focus on exposure and population.</p><div class="foot"><a href="https://ideas.repec.org/a/sae/envirb/v48y2021i7p2006-2022.html">Benita, Kalashnikov &amp; Tunçer 2021</a></div></article>
-      <article class="card"><div class="tag">Gap 4</div><h4>Heat risk mapped too coarsely</h4><p>The Singapore-ETH 2020 vulnerability map is by planning area, far coarser than the block where people live.</p><div class="foot"><a href="https://mothership.sg/2024/02/spore-hotter-sengkang-hot-wp-motion//amp">Mothership, Feb 2024</a></div></article>
-      <article class="card"><div class="tag">Gap 5</div><h4>No town-level link from design to outcome</h4><p>City-level heat is tracked 1990–2024; no town-by-town study linked to design choices was found.</p><div class="foot"><a href="https://www.nature.com/articles/s42949-025-00315-8">npj Urban Sustainability 2025</a></div></article>
-      <article class="card"><div class="tag">Gap 6</div><h4>Indoor heat is unmapped</h4><p>About half of 400+ flats hotter inside than outdoors; more than 90% of rental flats lack air-con.</p><div class="foot"><a href="https://www.herworld.com/life/your-home-hotter-outside-what-singapores-latest-housing-study-reveals">Her World 2026</a> · <a href="https://wsbe-2026.p.asnevents.com.au/days/2026-06-11/abstract/130130">WSBE 2026</a></div></article>
-      <article class="card"><div class="tag">Gap 7</div><h4>No heat target</h4><p>The Green Plan 2030 targets parks within a 10-minute walk, trees and buildings, but sets no heat target.</p><div class="foot"><a href="https://www.greenplan.gov.sg/targets/">Green Plan 2030</a></div></article>
-      <article class="card"><div class="tag">Gap 8</div><h4>Averages hide inequity</h4><p>Green-space cooling is inequitably distributed; lower-income groups drive the gap.</p><div class="foot"><a href="https://ideas.repec.org/a/eee/ecoser/v73y2025ics2212041625000312.html">Xu et al. 2025, Ecosystem Services</a></div></article>
+      <article class="card"><div class="tag">Gap 01</div><h4>Design tools model physics, not people</h4><p>HDB/A*STAR's Integrated Environmental Modeller (used for Tengah) simulates wind, sun and temperature; URA's cooling page does not mention elderly or vulnerable residents.</p><div class="foot"><a href="https://www.ura.gov.sg/land-planning/master-plan/master-plan-2025/themes/strengthening-urban-resilience/a-cool-city-in-a-warming-world/">URA Master Plan 2025: A Cool City</a></div></article>
+      <article class="card"><div class="tag">Gap 02</div><h4>Greenery rules count leaves, not who benefits</h4><p>Green Plot Ratio 3–4, tiered by plot ratio and location, not by heat or vulnerability.</p><div class="foot"><a href="https://www.ura.gov.sg/Corporate/Guidelines/Development-Control/Residential/Flats-Condominiums/Greenery">URA greenery requirements</a></div></article>
+      <article class="card"><div class="tag">Gap 03</div><h4>Liveability and heat are measured separately</h4><p>A 203-subzone liveability index has no heat; heat-vulnerability maps focus on exposure and population.</p><div class="foot"><a href="https://ideas.repec.org/a/sae/envirb/v48y2021i7p2006-2022.html">Benita, Kalashnikov &amp; Tunçer 2021</a></div></article>
+      <article class="card"><div class="tag">Gap 04</div><h4>Heat risk mapped too coarsely</h4><p>The Singapore-ETH 2020 vulnerability map is by planning area, far coarser than the block where people live.</p><div class="foot"><a href="https://mothership.sg/2024/02/spore-hotter-sengkang-hot-wp-motion//amp">Mothership, Feb 2024</a></div></article>
+      <article class="card"><div class="tag">Gap 05</div><h4>No town-level link from design to outcome</h4><p>City-level heat is tracked 1990–2024; no town-by-town study linked to design choices was found.</p><div class="foot"><a href="https://www.nature.com/articles/s42949-025-00315-8">npj Urban Sustainability 2025</a></div></article>
+      <article class="card"><div class="tag">Gap 06</div><h4>Indoor heat is unmapped</h4><p>About half of 400+ flats hotter inside than outdoors; more than 90% of rental flats lack air-con.</p><div class="foot"><a href="https://www.herworld.com/life/your-home-hotter-outside-what-singapores-latest-housing-study-reveals">Her World 2026</a> · <a href="https://wsbe-2026.p.asnevents.com.au/days/2026-06-11/abstract/130130">WSBE 2026</a></div></article>
+      <article class="card"><div class="tag">Gap 07</div><h4>No heat target</h4><p>The Green Plan 2030 targets parks within a 10-minute walk, trees and buildings, but sets no heat target.</p><div class="foot"><a href="https://www.greenplan.gov.sg/targets/">Green Plan 2030</a></div></article>
+      <article class="card"><div class="tag">Gap 08</div><h4>Averages hide inequity</h4><p>Green-space cooling is inequitably distributed; lower-income groups drive the gap.</p><div class="foot"><a href="https://ideas.repec.org/a/eee/ecoser/v73y2025ics2212041625000312.html">Xu et al. 2025, Ecosystem Services</a></div></article>
     </div>
   </div>
 </section>
@@ -113,72 +171,75 @@
   <div class="wrap">
     <div class="kicker"><span class="n">03</span>The proposal</div>
     <div class="cols">
-      <div class="c-6">
-        <h2>Data flows in, scores flow out, and revenue funds the residents who report.</h2>
-      </div>
-      <div class="c-6">
-        <p class="intro">An interactive platform that helps planners and developers design towns that are cooler, greener, more flood-resilient and inclusive, before anything is built, and that gets smarter with every town Singapore builds.</p>
-      </div>
+      <div class="c-6"><h2>Data flows in, scores flow out, and revenue funds the <em>residents who report</em>.</h2></div>
+      <div class="c-6"><p class="intro">An interactive platform that helps planners and developers design towns that are cooler, greener, more flood-resilient and inclusive, before anything is built. It gets smarter with every town Singapore builds.</p></div>
     </div>
-    <div class="cols" style="margin-top:20px">
+    <div class="cols" style="margin-top:24px">
       <div class="c-4"><h3>1 · The index</h3><p class="small">Open data on one map scores every block 0–100 on six pillars. Planners and developers upload a plan and get a score, an inclusion check and nature-based tweaks showing the gain each would bring.</p></div>
-      <div class="c-4"><h3 style="color:var(--accent)">2 · Community data</h3><p class="small">Residents and Active Ageing Centres earn credits for verified actions and reports, led by rooftop farms (kg harvested). Reports validate the model and re-learn its weights, so each town improves the next. <b>This is the piece open data cannot provide.</b></p></div>
-      <div class="c-4"><h3>3 · How people pay</h3><p class="small">Developers, starting with Government Land Sales sites, buy a project pass that turns mandatory greenery into returns, backed by verified post-occupancy data for ESG reporting. Planners buy seats or a licence. Part of revenue funds residents' credits.</p></div>
+      <div class="c-4"><h3 style="color:var(--green)">2 · Community data</h3><p class="small">Residents and Active Ageing Centres earn credits for verified actions and reports, led by rooftop farms (kg harvested). Reports validate the model and re-learn its weights, so each town improves the next. <b>This is the piece open data cannot provide.</b></p></div>
+      <div class="c-4"><h3>3 · How people pay</h3><p class="small">Developers, starting with Government Land Sales sites, buy a project pass that turns mandatory greenery into returns, backed by verified post-occupancy data for ESG reporting. Planners buy seats or a licence. Part of the revenue funds residents' credits.</p></div>
     </div>
     <div class="flow" style="margin-top:40px" aria-label="Flow diagram: open data and resident reports feed the platform; planners and developers pay for scores and tweaks; revenue funds residents who keep the data current.">
       <svg viewBox="0 0 1100 330" role="img">
         <defs>
-          <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#898781"/></marker>
-          <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#eb6834"/></marker>
+          <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a918c"/></marker>
+          <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f7a52"/></marker>
         </defs>
         <g font-size="15">
-          <rect x="20" y="20" width="250" height="78" rx="8" fill="#fff" stroke="#c3c2b7"/><text x="40" y="52" font-weight="600" fill="#0b0b0b">Open data</text><text x="40" y="76" fill="#52514e" font-size="13">agencies · satellites · OpenStreetMap</text>
-          <rect x="420" y="110" width="260" height="110" rx="8" fill="#eef4fc" stroke="#003d7c" stroke-width="1.5"/><text x="440" y="142" font-weight="600" fill="#003d7c">Platform</text><text x="440" y="166" fill="#52514e" font-size="13">resilience &amp; heat index · scores</text><text x="440" y="186" fill="#52514e" font-size="13">scenarios · suggests tweaks</text><text x="440" y="206" fill="#52514e" font-size="13">funds block credit pots</text>
-          <rect x="830" y="20" width="250" height="78" rx="8" fill="#fff" stroke="#c3c2b7"/><text x="850" y="52" font-weight="600" fill="#0b0b0b">Planners, developers</text><text x="850" y="76" fill="#52514e" font-size="13">buy project passes or seats</text>
-          <rect x="830" y="232" width="250" height="78" rx="8" fill="#fff" stroke="#c3c2b7"/><text x="850" y="264" font-weight="600" fill="#0b0b0b">New towns and sites</text><text x="850" y="288" fill="#52514e" font-size="13">better designs built</text>
-          <rect x="20" y="232" width="250" height="78" rx="8" fill="#fdf0ea" stroke="#eb6834" stroke-width="1.8"/><text x="40" y="264" font-weight="600" fill="#b2461d">Residents, AACs</text><text x="40" y="288" fill="#52514e" font-size="13">verified reports · earn credits</text>
-          <path d="M270 59 H345 V150 H418" fill="none" stroke="#898781" stroke-width="1.4" marker-end="url(#ar)"/>
-          <path d="M682 150 H760 V59 H828" fill="none" stroke="#898781" stroke-width="1.4" marker-end="url(#ar)"/>
-          <path d="M828 74 H790 V190 H682" fill="none" stroke="#898781" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ar)"/>
-          <text x="700" y="122" fill="#898781" font-size="12">payment</text>
-          <path d="M955 98 V230" fill="none" stroke="#898781" stroke-width="1.4" marker-end="url(#ar)"/><text x="965" y="170" fill="#898781" font-size="12">design built</text>
-          <path d="M828 271 H272" fill="none" stroke="#898781" stroke-width="1.4" marker-end="url(#ar)"/><text x="500" y="262" fill="#898781" font-size="12">residents move in</text>
-          <path d="M145 230 V180 H418" fill="none" stroke="#eb6834" stroke-width="2" marker-end="url(#ar2)"/><text x="160" y="172" fill="#b2461d" font-size="12" font-weight="600">verified reports re-learn the weights</text>
+          <rect x="20" y="20" width="250" height="78" rx="3" fill="#fff" stroke="#c9d3cc"/><text x="40" y="52" font-weight="600" fill="#111a15">Open data</text><text x="40" y="76" fill="#4a524d" font-size="13">agencies · satellites · OpenStreetMap</text>
+          <rect x="420" y="110" width="260" height="110" rx="3" fill="#fff" stroke="#111a15" stroke-width="1.2"/><text x="440" y="142" font-weight="600" fill="#111a15">UrbanPulse platform</text><text x="440" y="166" fill="#4a524d" font-size="13">resilience &amp; heat index · scores</text><text x="440" y="186" fill="#4a524d" font-size="13">scenarios · suggests tweaks</text><text x="440" y="206" fill="#4a524d" font-size="13">funds block credit pots</text>
+          <rect x="830" y="20" width="250" height="78" rx="3" fill="#fff" stroke="#c9d3cc"/><text x="850" y="52" font-weight="600" fill="#111a15">Planners, developers</text><text x="850" y="76" fill="#4a524d" font-size="13">buy project passes or seats</text>
+          <rect x="830" y="232" width="250" height="78" rx="3" fill="#fff" stroke="#c9d3cc"/><text x="850" y="264" font-weight="600" fill="#111a15">New towns and sites</text><text x="850" y="288" fill="#4a524d" font-size="13">better designs built</text>
+          <rect x="20" y="232" width="250" height="78" rx="3" fill="#eef6f1" stroke="#1f7a52" stroke-width="1.5"/><text x="40" y="264" font-weight="600" fill="#1f7a52">Residents, AACs</text><text x="40" y="288" fill="#4a524d" font-size="13">verified reports · earn credits</text>
+          <path d="M270 59 H345 V150 H418" fill="none" stroke="#8a918c" stroke-width="1.2" marker-end="url(#ar)"/>
+          <path d="M682 150 H760 V59 H828" fill="none" stroke="#8a918c" stroke-width="1.2" marker-end="url(#ar)"/>
+          <path d="M828 74 H790 V190 H682" fill="none" stroke="#8a918c" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+          <text x="700" y="122" fill="#8a918c" font-size="12">payment</text>
+          <path d="M955 98 V230" fill="none" stroke="#8a918c" stroke-width="1.2" marker-end="url(#ar)"/><text x="965" y="170" fill="#8a918c" font-size="12">design built</text>
+          <path d="M828 271 H272" fill="none" stroke="#8a918c" stroke-width="1.2" marker-end="url(#ar)"/><text x="500" y="262" fill="#8a918c" font-size="12">residents move in</text>
+          <path d="M145 230 V180 H418" fill="none" stroke="#1f7a52" stroke-width="2" marker-end="url(#ar2)"/><text x="160" y="172" fill="#1f7a52" font-size="12" font-weight="600">verified reports re-learn the weights</text>
         </g>
       </svg>
-      <p class="tiny muted">Solid lines: data and tools. Dashed: payment. Orange: the community-data loop, the element no existing tool has.</p>
+      <p class="tiny muted">Solid lines: data and tools. Dashed: payment. Green: the community-data loop, the element no existing tool has.</p>
     </div>
-  </div>
-</section>
 
-<!-- pinned horizontal story: 7 steps, 1 loop -->
-<section class="pin" id="loop" aria-label="The whole flow in seven steps">
-  <div class="pin-sticky">
-    <div class="wrap pin-head">
-      <div class="kicker"><span class="n">03b</span>The whole flow · 7 steps, 1 loop</div>
-      <h2>Each new town feeds the next through community data.</h2>
+    <h3 style="margin-top:56px">What is new</h3>
+    <div class="scroll-x"><table class="tbl vs">
+      <thead><tr><th></th><th>Today</th><th>UrbanPulse</th></tr></thead>
+      <tbody>
+        <tr><td>Unit of analysis</td><td>Planning area, or one site at a time</td><td>Every HDB block, and who lives in it</td></tr>
+        <tr><td>What is measured</td><td>Wind, sun and temperature (physics simulators); leaf area (Green Plot Ratio)</td><td>Cooling, shade, access and use by people, with a confidence flag on every indicator</td></tr>
+        <tr><td>Equity</td><td>Averages</td><td>Need weights for seniors and rental households, plus an inclusion gap on every plan</td></tr>
+        <tr><td>After handover</td><td>No data; green claims cannot be verified</td><td>Verified community data: kg harvested, use, upkeep, comfort, species</td></tr>
+        <tr><td>Money</td><td>Greenery is a compliance cost</td><td>Verified KPIs unlock sustainability-linked loan step-downs and lower upkeep</td></tr>
+        <tr><td>Learning</td><td>Each new town starts from assumptions</td><td>Each verified site re-learns the weights for the next</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="rail-head" style="margin-top:64px">
+      <div><h3>The whole flow · 7 steps, 1 loop</h3><p class="small muted" style="max-width:60ch">Each new town feeds the next through community data. "Here" notes what this repository implements.</p></div>
+      <div class="rail-ctrl"><button data-rail="steprail" data-dir="-1" aria-label="Previous">←</button><button data-rail="steprail" data-dir="1" aria-label="Next">→</button></div>
     </div>
-    <div class="pin-track" id="pintrack">
-      <article class="step"><span class="no">01</span><h4>Integrate</h4><p>One live map of heat and felt heat, satellite heat history, greenery, flooding, buildings, mobility, seniors and access, all from open data.</p><div class="out">Here: 16 data.gov.sg datasets + the PUB flood list, 89 Landsat + 7 Sentinel-2 scenes, an OSM walk network.</div></article>
-      <article class="step"><span class="no">02</span><h4>Learn &amp; benchmark</h4><p>Score existing HDB towns down to block level, track how their heat changed, and turn the best performers into design targets.</p><div class="out">Here: 27 towns ranked; targets from the top-5 towns per indicator.</div></article>
-      <article class="step"><span class="no">03</span><h4>Score the scenario</h4><p>A planner or developer draws or uploads a scenario (layout, parks, flat mix, routes); the index scores it on all six pillars and runs the inclusion check.</p><div class="out">Fixed national reference, so a gain is a real move up the distribution.</div></article>
-      <article class="step"><span class="no">04</span><h4>Suggest tweaks</h4><p>Specific nature-based changes with their score gain. The user accepts or rejects each; whole generated alternatives come later, once community data has validated the model.</p><div class="out">Here: green pockets, rooftop farms and shaded walkways for Woodlands.</div></article>
-      <article class="step"><span class="no">05</span><h4>Check inclusion</h4><p>A plan cannot score well on average if its worst-served 20% of blocks, or its senior flats, fall far behind.</p><div class="out">Here: an average-first package widens the gap; an inclusion-aware one closes it.</div></article>
-      <article class="step new"><span class="badge">NEW</span><span class="no">06</span><h4>Keep it alive with the community</h4><p>After move-in, residents and AAC seniors earn credits for verified shade, green pockets and neighbour check-ins; actions and indoor readings feed back into step 2.</p><div class="out">The loop that turns a static index into a learning one.</div></article>
-      <article class="step"><span class="no">07</span><h4>Show the value</h4><p>A separate value lens shows potential resale effects of cooling and greening, kept outside the score, so seniors' homes are never marked down.</p><div class="out">Here: 73,304 resale transactions, 2024–2026.</div></article>
+    <div class="rail" id="steprail">
+      <article class="card step"><div class="tag">Step 01</div><h4>Integrate</h4><p>One live map of heat and felt heat, satellite heat history, greenery, flooding, buildings, mobility, seniors and access, all from open data.</p><div class="out">Here: 16 data.gov.sg datasets + the PUB flood list, 89 Landsat + 7 Sentinel-2 scenes, an OSM walk network.</div></article>
+      <article class="card step"><div class="tag">Step 02</div><h4>Learn &amp; benchmark</h4><p>Score existing HDB towns down to block level, track how their heat changed, and turn the best performers into design targets.</p><div class="out">Here: 27 towns ranked; targets from the top-5 towns per indicator.</div></article>
+      <article class="card step"><div class="tag">Step 03</div><h4>Score the scenario</h4><p>A planner or developer draws or uploads a scenario; the index scores it on all six pillars and runs the inclusion check.</p><div class="out">Fixed national reference, so a gain is a real move up the distribution.</div></article>
+      <article class="card step"><div class="tag">Step 04</div><h4>Suggest tweaks</h4><p>Specific nature-based changes with their score gain. The user accepts or rejects each; whole generated alternatives come later, once community data has validated the model.</p><div class="out">Here: green pockets, rooftop farms and shaded walkways for Woodlands.</div></article>
+      <article class="card step"><div class="tag">Step 05</div><h4>Check inclusion</h4><p>A plan cannot score well on average if its worst-served 20% of blocks, or its senior flats, fall far behind.</p><div class="out">Here: an average-first package widens the gap; an inclusion-aware one closes it.</div></article>
+      <article class="card step new"><span class="badge">NEW</span><div class="tag">Step 06</div><h4>Keep it alive with the community</h4><p>After move-in, residents and AAC seniors earn credits for verified shade, green pockets and neighbour check-ins; actions and indoor readings feed back into step 2.</p><div class="out">The loop that turns a static index into a learning one.</div></article>
+      <article class="card step"><div class="tag">Step 07</div><h4>Show the value</h4><p>A separate value lens shows resale effects of cooling and greening, kept outside the score, so seniors' homes are never marked down.</p><div class="out">Here: 73,304 resale transactions, 2024–2026.</div></article>
     </div>
-    <div class="pin-progress" aria-hidden="true"><i id="pinbar"></i></div>
   </div>
 </section>
 
 <!-- ================================================================ 04 INDEX -->
-<section class="chapter alt" id="index">
+<section class="chapter" id="index">
   <div class="wrap">
     <div class="kicker"><span class="n">04</span>Part 1 · The index</div>
     <div class="rail-head">
       <div>
-        <h2>Six pillars, every block, 0–100.</h2>
-        <p class="intro">Higher means more resilient. Each indicator becomes a percentile across all HDB blocks; a pillar is the mean of its indicators. Vulnerability <b>weights</b> the result rather than adding to it: as a pillar, a block would score higher simply by housing fewer seniors.</p>
+        <h2>Six pillars, every block, <em>0–100</em>.</h2>
+        <p class="intro">Higher means more resilient. Each indicator becomes a percentile across all HDB blocks, and a pillar is the mean of its indicators. Vulnerability <b>weights</b> the result rather than adding to it. Added as a pillar, a block would score higher simply by housing fewer seniors.</p>
       </div>
       <div class="rail-ctrl"><button data-rail="pillarrail" data-dir="-1" aria-label="Previous">←</button><button data-rail="pillarrail" data-dir="1" aria-label="Next">→</button></div>
     </div>
@@ -193,7 +254,7 @@ need      = (seniors + 1.5·rental)
             × 1.3 if built before 1990
 town      = Σ need·block / Σ need
 inclusion = median − mean(worst 20%)</div>
-        <p class="small muted" style="margin-top:12px">Default weights w = 25/20/15/15/15/10. Seniors per block = non-rental units × 3.0 persons × the Census 2020 share aged 65+ in that subzone. Shade enters access only through heat-adjusted walking routes (an unshaded metre counts as 1.5), so it is not counted twice.</p>
+        <p class="small muted" style="margin-top:12px">Default weights w = 25/20/15/15/15/10. Seniors per block = non-rental units × 3.0 persons × the Census 2020 share aged 65+ in that subzone. Shade enters access only through heat-adjusted walking routes, where an unshaded metre counts as 1.5, so it is not counted twice.</p>
       </div>
       <div class="c-7">
         <h3>Why these inputs: five tests</h3>
@@ -213,7 +274,7 @@ inclusion = median − mean(worst 20%)</div>
   <div class="wrap">
     <div class="kicker"><span class="n">05</span>Atlas</div>
     <div class="cols">
-      <div class="c-7"><h2>One map, every block, your weights.</h2></div>
+      <div class="c-7"><h2>One map, every block, <em>your</em> weights.</h2></div>
       <div class="c-5"><p class="intro">Switch layers, re-weight the pillars, and watch the town ranking and inclusion gaps respond. Click any block for its pillar breakdown.</p></div>
     </div>
     <div class="atlas">
@@ -238,9 +299,10 @@ inclusion = median − mean(worst 20%)</div>
         <div id="blockcard" class="blockcard muted">Click a block on the map.</div>
       </aside>
     </div>
-    <div class="cols" style="margin-top:40px">
+    <div class="cols" style="margin-top:44px">
       <div class="c-7">
         <h3>Town ranking (need-weighted)</h3>
+        <p class="small muted">Click a town to zoom the map.</p>
         <div class="chart" id="rankchart"></div>
       </div>
       <div class="c-5">
@@ -253,14 +315,14 @@ inclusion = median − mean(worst 20%)</div>
 </section>
 
 <!-- ================================================================ 06 HEAT HISTORY -->
-<section class="chapter dark" id="heat">
+<section class="chapter" id="heat">
   <div class="wrap">
     <div class="kicker"><span class="n">06</span>Satellite heat history</div>
     <div class="cols">
       <div class="c-5">
-        <h2 style="color:#fff">Three decades of surface heat, block by block.</h2>
-        <p class="intro">Drag the slider to compare 1988–97 (Landsat 5) with 2021–25 (Landsat 8/9). Each scene is cloud-masked and expressed relative to that day's island median, so the maps show where heat moved, not absolute warming.</p>
-        <div class="callout"><b>Estates cool as their trees mature.</b> Blocks built in the 1980s are now relatively cooler than they were in the 1990s; blocks built 1998–2009, on land that was green in the 1990s, warmed most (median +1.1 °C relative).</div>
+        <h2>Three decades of surface heat, <em>block by block</em>.</h2>
+        <p class="intro">Drag the slider to compare 1988–97 (Landsat 5) with 2021–25 (Landsat 8/9). Each scene is cloud-masked and expressed relative to that day's island median. The maps therefore show where heat moved, not absolute warming.</p>
+        <div class="callout"><b>Estates cool as their trees mature.</b> Blocks built in the 1980s are now relatively cooler than in the 1990s. Blocks built 1998–2009, on land that was green in the 1990s, warmed most (median +1.1 °C relative).</div>
         <div class="callout"><b>Canopy is the strongest plannable lever.</b> Holding town, imperviousness, height and age fixed, +10 percentage points of tree canopy within 200 m goes with about <span id="canopyc">−0.5</span> °C surface heat.</div>
       </div>
       <div class="c-7">
@@ -271,25 +333,25 @@ inclusion = median − mean(worst 20%)</div>
           <span class="lab l">2021–25</span><span class="lab r">1988–97</span>
           <input type="range" min="0" max="100" value="50" aria-label="Compare 1988–97 and 2021–25">
         </div>
-        <div style="margin-top:12px;max-width:340px"><div class="legend-bar heat"></div><div class="legend-lab" style="color:#9aa6b8"><span>−6 °C cooler</span><span>island median</span><span>+6 °C hotter</span></div></div>
+        <div style="margin-top:12px;max-width:340px"><div class="legend-bar heat"></div><div class="legend-lab"><span>−6 °C cooler</span><span>island median</span><span>+6 °C hotter</span></div></div>
       </div>
     </div>
-    <figure class="figure" style="margin-top:50px;background:#fff;padding:16px;border-radius:4px">
+    <figure class="figure" style="margin-top:56px">
       <img src="assets/img/figures/fig1_heat.png" alt="Figure 1: surface heat maps, change by build era, heat drivers and canopy partial dependence" loading="lazy">
-      <figcaption style="color:#52514e"><b>Figure 1.</b> <b>a</b> Median surface-heat anomaly 2021–25. <b>b</b> Change since 1988–97. <b>c</b> Change by block build era. <b>d</b> Standardised OLS coefficients with town fixed effects and town-clustered 95% CIs. <b>e</b> Partial dependence from gradient-boosted trees, validated leave-one-town-out. LST is computed with a single-channel method and NDVI-based emissivity because the official ST band has gaps in north-east Singapore; against the official product where both exist, RMSE is <span id="lstrmse">0.99</span> °C.</figcaption>
+      <figcaption><b>Figure 1.</b> <b>a</b> Median surface-heat anomaly 2021–25. <b>b</b> Change since 1988–97. <b>c</b> Change by block build era (bars: 5–95% and 25–75% of blocks). <b>d</b> Standardised OLS coefficients with town fixed effects; bars are town-clustered 95% and 50% confidence intervals. <b>e</b> Partial dependence of surface heat on canopy across 27 gradient-boosted models, each trained with one town held out. The official ST band has gaps in north-east Singapore, so LST is computed with a single-channel method and NDVI-based emissivity. Where both exist, it matches the official product with RMSE <span id="lstrmse">0.99</span> °C.</figcaption>
     </figure>
   </div>
 </section>
 
 <!-- ================================================================ 07 BENCHMARK -->
-<section class="chapter alt" id="benchmark">
+<section class="chapter" id="benchmark">
   <div class="wrap">
     <div class="kicker"><span class="n">07</span>Learn &amp; benchmark</div>
     <div class="cols">
       <div class="c-5">
-        <h2>Turn the best performers into design targets.</h2>
-        <p class="intro">For each plannable indicator, the target is what the median block in the five best-performing towns already achieves. These are observed in Singapore, not assumed.</p>
-        <figure class="figure photo" style="height:260px;margin-top:24px">
+        <h2>Turn the best performers into <em>design targets</em>.</h2>
+        <p class="intro">For each plannable indicator, the target is what the median block in the five best-performing towns already achieves. These targets are observed in Singapore, not assumed.</p>
+        <figure class="photo" style="height:250px;margin-top:24px">
           <img src="assets/img/photos/bishan-river.jpg" alt="Naturalised Kallang River at Bishan-Ang Mo Kio Park" loading="lazy">
           <span class="credit">Bishan-Ang Mo Kio Park · <a href="https://commons.wikimedia.org/wiki/File:Looking_north_up_Kallang_River_at_Bishan-Ang_Mo_Kio_Park.jpg">Wzhkevin</a>, CC BY-SA 4.0</span>
         </figure>
@@ -301,15 +363,14 @@ inclusion = median − mean(worst 20%)</div>
         </table></div>
       </div>
     </div>
-  
     <div class="rail-head" style="margin-top:60px">
-      <div><h3>Precedents the index can learn from</h3><p class="small muted" style="max-width:60ch">Singapore already builds blue-green infrastructure; what is missing is evidence of who it serves. Each of these can become a scored, community-verified design pattern.</p></div>
+      <div><h3>Precedents the index can learn from</h3><p class="small muted" style="max-width:60ch">Singapore already builds blue-green infrastructure. What is missing is evidence of who it serves; each of these can become a scored, community-verified design pattern.</p></div>
       <div class="rail-ctrl"><button data-rail="photorail" data-dir="-1" aria-label="Previous">←</button><button data-rail="photorail" data-dir="1" aria-label="Next">→</button></div>
     </div>
     <div class="rail" id="photorail">
-      <figure class="card photo-card"><div class="photo"><img src="assets/img/photos/bishan-before-after.jpg" alt="Aerial before and after of Bishan-Ang Mo Kio Park, concrete canal turned into a naturalised river" loading="lazy"></div><figcaption><b>Concrete canal → river park.</b> Bishan-Ang Mo Kio Park turned a 2.7 km concrete canal into a naturalised river (PUB ABC Waters). <span class="muted"><a href="https://commons.wikimedia.org/wiki/File:Before_and_After_Aerial_View_of_Bishan_Park.jpg">Pagodashophouse</a>, CC BY-SA 3.0</span></figcaption></figure>
-      <figure class="card photo-card"><div class="photo"><img src="assets/img/photos/punggol-waterway.jpg" alt="Punggol Waterway at dusk" loading="lazy"></div><figcaption><b>Blue-green spine for a new town.</b> Punggol Waterway; Punggol's blocks rank among the coolest relative to the island median. <span class="muted"><a href="https://commons.wikimedia.org/wiki/File:Punggol_Waterway_in_2013.jpg">Erwin Soo</a>, CC BY 2.0</span></figcaption></figure>
-      <figure class="card photo-card"><div class="photo"><img src="assets/img/photos/hdb-canal-segar.jpg" alt="HDB blocks beside a planted canal near Segar LRT" loading="lazy"></div><figcaption><b>Everyday water edges.</b> A planted drain beside blocks near Segar LRT, Bukit Panjang, the top-ranked town. <span class="muted"><a href="https://commons.wikimedia.org/wiki/File:HDB_flats_and_canal_near_Segar_LRT_station._Singapore.jpg">Teojincheng</a>, CC0</span></figcaption></figure>
+      <figure class="card photo-card"><div class="photo"><img src="assets/img/photos/bishan-before-after.jpg" alt="Aerial before and after of Bishan-Ang Mo Kio Park" loading="lazy"></div><figcaption><b>Concrete canal → river park.</b> Bishan-Ang Mo Kio Park turned a 2.7 km concrete canal into a naturalised river (PUB ABC Waters). <span class="muted"><a href="https://commons.wikimedia.org/wiki/File:Before_and_After_Aerial_View_of_Bishan_Park.jpg">Pagodashophouse</a>, CC BY-SA 3.0</span></figcaption></figure>
+      <figure class="card photo-card"><div class="photo"><img src="assets/img/photos/punggol-waterway.jpg" alt="Punggol Waterway at dusk" loading="lazy"></div><figcaption><b>Blue-green spine for a new town.</b> Punggol Waterway; Punggol's blocks are, on average, the coolest of any town relative to the island median. <span class="muted"><a href="https://commons.wikimedia.org/wiki/File:Punggol_Waterway_in_2013.jpg">Erwin Soo</a>, CC BY 2.0</span></figcaption></figure>
+      <figure class="card photo-card"><div class="photo"><img src="assets/img/photos/hdb-canal-segar.jpg" alt="HDB blocks beside a planted canal near Segar LRT" loading="lazy"></div><figcaption><b>Everyday water edges.</b> A planted drain beside blocks near Segar LRT in Bukit Panjang, the top-ranked town. <span class="muted"><a href="https://commons.wikimedia.org/wiki/File:HDB_flats_and_canal_near_Segar_LRT_station._Singapore.jpg">Teojincheng</a>, CC0</span></figcaption></figure>
       <figure class="card photo-card"><div class="photo"><img src="assets/img/photos/covered-walkway-670a.jpg" alt="Covered walkway leading to a bus stop near Block 670A" loading="lazy"></div><figcaption><b>Shade to the bus stop.</b> Covered linkways like this one, expanded under LTA's Walk2Ride programme, count as fully shaded in heat-adjusted walks. <span class="muted"><a href="https://commons.wikimedia.org/wiki/File:Near_Block_670A_bus_stop_07-08-2025.jpg">LN9267</a>, CC BY-SA 4.0</span></figcaption></figure>
       <figure class="card photo-card"><div class="photo"><img src="assets/img/photos/garden-jalan-senang.jpg" alt="Lush community garden in Jalan Senang estate" loading="lazy"></div><figcaption><b>Gardens residents keep.</b> Community in Bloom gardens are today's proxy for the Community pillar. <span class="muted"><a href="https://commons.wikimedia.org/wiki/File:Community_Garden_in_Jalan_Senang_Estate.jpg">Wzhkevin</a>, CC BY-SA 4.0</span></figcaption></figure>
       <figure class="card photo-card"><div class="photo"><img src="assets/img/photos/tengah-2.jpg" alt="New HDB blocks and construction in Tengah" loading="lazy"></div><figcaption><b>The next test.</b> Tengah, the "forest town", scores lowest today because its trees, gardens and amenities are still being built. <span class="muted"><a href="https://commons.wikimedia.org/wiki/File:Tengah_Singapore_HDB_20240529_151335.jpg">ZKang123</a>, CC BY-SA 4.0</span></figcaption></figure>
@@ -322,8 +383,8 @@ inclusion = median − mean(worst 20%)</div>
   <div class="wrap">
     <div class="kicker"><span class="n">08</span>Suggest tweaks · check inclusion</div>
     <div class="cols">
-      <div class="c-7"><h2>Woodlands: which six changes, for whom?</h2></div>
-      <div class="c-5"><p class="intro">The engine screens green pockets on URA Master Plan 2025 reserve and open-space parcels, community farms on HDB car-park roofs, and shading for the walkways residents use most. Each shows the score it adds and who it reaches. Tick to build your own package.</p></div>
+      <div class="c-7"><h2>Woodlands: which six changes, <em>for whom</em>?</h2></div>
+      <div class="c-5"><p class="intro">The engine screens three kinds of change: green pockets on URA Master Plan 2025 reserve and open-space parcels, community farms on HDB car-park roofs, and shading for the walkways residents use most. Each shows the score it adds and who it reaches. Tick to build your own package.</p></div>
     </div>
     <div class="seg" id="pkgseg" style="margin-top:24px">
       <button data-pkg="inclusion_aware" aria-pressed="true">Inclusion-aware package</button>
@@ -347,24 +408,25 @@ inclusion = median − mean(worst 20%)</div>
     <div class="callout" id="pkgcallout"></div>
     <figure class="figure" style="margin-top:30px">
       <img src="assets/img/figures/fig3_tweaks.png" alt="Figure 3: Woodlands tweak package, comparison of two rankings, and who gains" loading="lazy">
-      <figcaption><b>Figure 3.</b> Six tweaks chosen greedily, at most three per type and 300 m apart. Re-ranking the same candidate pool by gains for the worst-served 20% trades 0.5 points of average for a closing, not widening, inclusion gap.</figcaption>
+      <figcaption><b>Figure 3.</b> Six tweaks chosen greedily, at most three per type and at least 300 m apart. Re-ranking the same candidate pool by gains for the worst-served 20% gives up 0.5 points of town average, and the inclusion gap closes instead of widening.</figcaption>
     </figure>
   </div>
 </section>
 
 <!-- ================================================================ 09 COMMUNITY -->
-<section class="chapter alt" id="community">
+<section class="chapter" id="community">
   <div class="wrap">
     <div class="kicker"><span class="n">09</span>Part 2 · Community data</div>
     <div class="cols">
       <div class="c-6">
-        <h2>Open data predicts. Residents verify.</h2>
+        <h2>Open data predicts. <em>Residents verify.</em></h2>
         <p class="intro">Two parks with the same score may draw 40 versus 5 seniors an hour because only one has shaded seats and good upkeep. Community reports tell the model how green spaces are actually used, and credits keep the reports coming.</p>
       </div>
       <div class="c-6">
         <div class="formula">credits = Δ indicator × block need weight
         (more seniors and rental households → more credits)
-report-only actions → fixed amount; under-sampled spaces → bounty</div>
+report-only actions → fixed amount
+under-sampled spaces → bounty</div>
       </div>
     </div>
     <div class="strip">
@@ -391,7 +453,7 @@ report-only actions → fixed amount; under-sampled spaces → bounty</div>
     <div class="cols" style="margin-top:50px">
       <div class="c-6">
         <h3>Hero feature: the rooftop farm</h3>
-        <p class="small">Its output, kilograms harvested, is easy to verify and links to several returns. HDB car-park rooftops have already been tendered to urban farms (<a href="https://agfundernews.com/singapore-food-and-housing-agencies-to-rent-out-public-rooftops-for-urban-farms">2020 round: 9 sites, 1,808–3,311 m², 3-year terms</a>), and urban farming already appears as a target in sustainability-linked loans to Singapore developers.</p>
+        <p class="small">Its output, kilograms harvested, is easy to verify and links to several returns. HDB car-park rooftops have already been tendered to urban farms (<a href="https://agfundernews.com/singapore-food-and-housing-agencies-to-rent-out-public-rooftops-for-urban-farms">2020 round: 9 sites, 1,808–3,311 m², 3-year terms</a>). Urban farming is already a target in a <a href="https://www.cdl.com.sg/newsroom/cdl-and-dbs-launch-s-300-million-multi-currency-sustainability-linked-loan-to-advance-nature-based-urban-development-solutions-in-singapore">S$300M sustainability-linked loan to a Singapore developer</a>.</p>
         <table class="tbl"><thead><tr><th>Metric</th><th>Community source</th><th>Return it proves</th></tr></thead><tbody>
           <tr><td>Harvest (kg / month, by crop)</td><td>Logs weighed at collection</td><td>Loan target met; produce or rent income</td></tr>
           <tr><td>Volunteer hours, residents involved</td><td>QR check-ins</td><td>Social connection; ESG reporting</td></tr>
@@ -406,7 +468,7 @@ report-only actions → fixed amount; under-sampled spaces → bounty</div>
           <li>Verify before paying; only the first valid report of a problem counts.</li>
           <li>Pay for taking part, never for the answer.</li>
           <li>Weekly cap per person, so a few users don't dominate the data.</li>
-          <li>Physical actions decay unless re-verified (period adjustable per action type).</li>
+          <li>Physical actions decay unless re-verified (the period is adjustable per action type).</li>
           <li>Maps separate measured, claimed and human-reported data; scores recalculate monthly.</li>
           <li>Seniors can log through AAC staff on paper; no smartphone needed.</li>
           <li>Consent, and aggregates by block or site only, in line with the PDPA.</li>
@@ -424,15 +486,29 @@ report-only actions → fixed amount; under-sampled spaces → bounty</div>
   </div>
 </section>
 
-<!-- ================================================================ 10 VALUE -->
+<!-- ================================================================ 10 BUSINESS -->
 <section class="chapter" id="value">
   <div class="wrap">
     <div class="kicker"><span class="n">10</span>Part 3 · How people pay and benefit</div>
     <div class="cols">
-      <div class="c-7"><h2>Making mandatory greenery pay.</h2></div>
-      <div class="c-5"><p class="intro">Developers are the main paying customers, starting with Government Land Sales sites, which face the most stringent standards. Planners are a smaller segment: professional seats or an annual licence by tender.</p></div>
+      <div class="c-7"><h2>Making mandatory greenery <em>pay</em>.</h2></div>
+      <div class="c-5"><p class="intro">Greenery is a compliance cost every developer already carries. The project pass turns it into measurable returns. The verified data behind those returns is what open data cannot give, so it is what customers pay for.</p></div>
     </div>
-    <div class="cols" style="margin-top:20px">
+
+    <h3 style="margin-top:36px">Who pays, for what</h3>
+    <div class="scroll-x"><table class="tbl">
+      <thead><tr><th>Customer</th><th>Product</th><th>Indicative price*</th><th>What they get</th></tr></thead>
+      <tbody>
+        <tr><td><b>Developers</b>, starting with Government Land Sales sites</td><td>Project Pass, per site</td><td class="num">S$80k one-off</td><td>Score the design against its 400 m neighbourhood; URA greenery compliance check; tweaks that place public green space where residents need it most; return calculator</td></tr>
+        <tr><td><b>Developers and lenders</b></td><td>Monitoring, per development</td><td class="num">S$36k a year, 5 years</td><td>Verified post-occupancy KPIs (harvest, microforest survival, use, comfort) for sustainability-linked loans, marketing claims and ESG reporting</td></tr>
+        <tr><td><b>Owners of existing buildings</b></td><td>Retrofit monitoring</td><td class="num">S$15k a year</td><td>Evidence for Skyrise Greenery Incentive retrofits, which co-fund existing buildings</td></tr>
+        <tr><td><b>Planners and agencies</b></td><td>Professional seats or an annual licence</td><td>by tender</td><td>Scenario scoring for new towns, inclusion check, benchmarks from towns that worked</td></tr>
+        <tr><td><b>Residents and AACs</b></td><td>Credits, funded by part of revenue</td><td>—</td><td>Vouchers or health-app points, garden steward recognition</td></tr>
+      </tbody>
+    </table></div>
+    <p class="tiny muted">* Illustrative assumptions used in the business model below, not quotes.</p>
+
+    <div class="cols" style="margin-top:48px">
       <div class="c-6">
         <h3>What is already required</h3>
         <table class="tbl"><thead><tr><th>Requirement</th><th>Demands</th><th>Confidence</th></tr></thead><tbody>
@@ -444,11 +520,11 @@ report-only actions → fixed amount; under-sampled spaces → bounty</div>
       <div class="c-6">
         <h3>How required greenery can earn</h3>
         <table class="tbl"><thead><tr><th>Return</th><th>Evidence</th><th></th></tr></thead><tbody>
-          <tr><td>Cheaper loans</td><td>Developer sustainability-linked loans now include microforest and urban-farming targets (a S$300M SLL, May 2026); rates step down when verified targets are met.</td><td><span class="conf high">lead return</span></td></tr>
-          <tr><td>Higher sale price</td><td>Condos within 1 km of Jurong Lake Gardens averaged $1,617 psf vs $1,383 within 2 km (simple averages, not causal; <a href="https://www.edgeprop.sg/property-news/green-premium-nature-raises-housing-prices">EdgeProp, Jul 2025</a>).</td><td><span class="conf low">weak</span></td></tr>
-          <tr><td>Subsidies</td><td><a href="https://cuge.nparks.gov.sg/grants/skyrise-greenery-incentive-scheme--sgis-">Skyrise Greenery Incentive</a>: up to 50% co-funding; covers existing buildings, so a retrofit line, not new GLS sites.</td><td><span class="conf medium">scope</span></td></tr>
+          <tr><td>Cheaper loans</td><td>Developer sustainability-linked loans now carry nature targets, e.g. the <a href="https://www.cdl.com.sg/newsroom/cdl-and-dbs-launch-s-300-million-multi-currency-sustainability-linked-loan-to-advance-nature-based-urban-development-solutions-in-singapore">CDL–DBS S$300M SLL (2026)</a> with microforest and urban-farming targets. Margins step down when verified targets are met.</td><td><span class="conf high">lead return</span></td></tr>
+          <tr><td>Lower upkeep</td><td>In the case study, a different greenery mix under the same rules cuts upkeep from S$35 to S$16 per unit per month.</td><td><span class="conf medium">model</span></td></tr>
+          <tr><td>Higher sale price</td><td>Condos within 1 km of Jurong Lake Gardens averaged $1,617 psf vs $1,383 within 2 km (<a href="https://www.edgeprop.sg/property-news/green-premium-nature-raises-housing-prices">EdgeProp, Jul 2025</a>). These are simple averages, not causal, and our HDB value lens finds no canopy premium.</td><td><span class="conf low">weak</span></td></tr>
+          <tr><td>Subsidies</td><td><a href="https://cuge.nparks.gov.sg/grants/skyrise-greenery-incentive-scheme--sgis-">Skyrise Greenery Incentive</a>: up to 50% co-funding. It covers existing buildings, so it is a retrofit line, not a return on new GLS sites.</td><td><span class="conf medium">scope</span></td></tr>
           <tr><td>Greenery that earns rent</td><td>HDB car-park roofs rented to urban farms; tendered rents about S$11–24/m²/yr.</td><td><span class="conf medium">tender data</span></td></tr>
-          <tr><td>Faster approvals</td><td>Built-in compliance check cuts redesign rounds.</td><td><span class="conf low">hypothesis</span></td></tr>
         </tbody></table>
       </div>
     </div>
@@ -456,8 +532,8 @@ report-only actions → fixed amount; under-sampled spaces → bounty</div>
     <div class="cols" style="margin-top:56px">
       <div class="c-5">
         <h3>The value lens: the market does not price cooling yet</h3>
-        <p class="small">A hedonic model of <span id="vl-n">73,304</span> HDB resale transactions (2024–2026), within town and month and controlling for flat type, model, size, storey and remaining lease, finds no premium for block-level canopy, while distance to MRT is priced strongly. These are associations, not causal effects.</p>
-        <div class="callout"><b>Why this matters for the business model:</b> if buyers do not reward cooling, the value has to be made visible another way, through verified data that unlocks cheaper loans and lower upkeep. That is the community-data loop, and it is why the lead return is finance, not sale premium.</div>
+        <p class="small">We fitted a hedonic model to <span id="vl-n">73,304</span> HDB resale transactions (2024–2026), within town and month, controlling for flat type, model, size, storey and remaining lease. It finds no premium for block-level canopy, while distance to MRT is priced strongly. These are associations, not causal effects.</p>
+        <div class="callout"><b>Why this shapes the business model:</b> if buyers do not reward cooling, its value has to be made visible another way, through verified data that unlocks cheaper loans and lower upkeep. That is the community-data loop, and it is why the lead return is finance, not sale premium.</div>
       </div>
       <div class="c-7"><div class="chart" id="valuechart"></div></div>
     </div>
@@ -467,38 +543,56 @@ report-only actions → fixed amount; under-sampled spaces → bounty</div>
       <div class="cols">
         <div class="c-5">
           <h3>A 2023 GLS condominium site in Woodlands</h3>
-          <p class="small">A mixed-integer programme (Gurobi; 129 variables of which 64 binary, 183 constraints, solved to proven optimality in milliseconds) chooses the greenery mix and where public cool-refuge pockets go, under URA's greenery rules, site capacities, a maintenance-fee cap and two loan KPIs. Pocket siting now uses the index: each nearby block is weighted by its need × resilience shortfall. Site figures come from public GLS records; the site is anonymised.</p>
-          <div class="stats two">
+          <p class="small">A mixed-integer programme (Gurobi; 129 variables, of which 64 binary, and 183 constraints) is solved to proven optimality in milliseconds. It chooses the greenery mix and where public cool-refuge pockets go, subject to URA's greenery rules, site capacities, a maintenance-fee cap and two loan KPIs. Pocket siting uses the index: each nearby block is weighted by need × resilience shortfall. Site figures come from public GLS records, and the site is anonymised.</p>
+        </div>
+        <div class="c-7">
+          <div class="stats two" style="margin-top:6px">
             <div class="stat"><b id="cs-lcc">−41%</b><p>30-year greenery cost vs a typical showcase design, same GnPR 3.5</p></div>
             <div class="stat"><b id="cs-reach">898</b><p>seniors + rental households within 200 m of a public cool refuge (best single-edge placement: <span id="cs-naive">712</span>)</p></div>
-            <div class="stat"><b id="cs-gain">+S$2.1M</b><p>net 30-year value per site vs showcase, after fees; positive in <span id="cs-prob">100%</span> of 20,000 Monte Carlo draws</p></div>
+            <div class="stat"><b id="cs-gain">+S$2.1M</b><p>median 30-year value per site vs showcase, after fees; positive in <span id="cs-prob">100%</span> of 20,000 Monte Carlo draws</p></div>
             <div class="stat"><b id="cs-fee">S$35→16</b><p>greenery upkeep per unit per month</p></div>
           </div>
         </div>
-        <div class="c-7">
+        <div class="c-12" style="margin-top:28px">
           <figure class="figure"><a href="assets/img/figures/fig5_developer_case.png" target="_blank"><img src="assets/img/figures/fig5_developer_case.png" alt="Figure 5: developer case results" loading="lazy"></a>
-          <figcaption><b>Figure 5.</b> Three designs under identical URA rules. Uncertain inputs (premium, upkeep, capex, cooling, loan step-down of 2.5–10 bps, farm rent) are sampled 20,000 times; the gain stays positive across one-at-a-time stress tests. Assumptions are tagged in <code>case_gls_site/src/params.py</code>.</figcaption></figure>
-          <h3 style="margin-top:30px">Business model (illustrative assumptions)</h3>
-          <div class="chart" id="bizchart"></div>
-          <p class="tiny muted">Project Pass S$80k per site, monitoring S$36k per development per year for 5 years, SGIS-eligible retrofit monitoring S$15k per building per year. Pipeline anchored to URA's 2026 Confirmed List supply of 9,320 units. Client value ≈ <span id="biz-roi">9.7</span>× the present value of fees in the case study.</p>
+          <figcaption><b>Figure 5.</b> <b>a</b> Three designs under identical URA rules. <b>b</b> 30-year net value over 20,000 draws of uncertain inputs (premium, upkeep, capex, cooling, loan step-down of 2.5–10 bps, farm rent). <b>c</b> The verification flywheel: as verified sites accumulate, the forecast narrows and the value a lender can underwrite (P10) turns positive. Assumptions are tagged in <code>case_gls_site/src/params.py</code>.</figcaption></figure>
         </div>
       </div>
     </div>
+
+    <div class="cols" style="margin-top:56px">
+      <div class="c-6">
+        <h3>Why it can win</h3>
+        <ul class="small">
+          <li><b>Evidence, not claims.</b> "Lush landscaping" becomes "shaded seating every 100 m doubles senior use". That evidence backs amenity choices, marketing and ESG reporting.</li>
+          <li><b>A data moat.</b> Verified post-occupancy data compounds. After 8 verified sites, the bankable value per site moves from −S$0.6M to +S$1.4M in the case model. A competitor without the library starts from zero.</li>
+          <li><b>Aligned incentives.</b> Developers save on upkeep and finance, residents are paid for taking part, and planners get evidence. Part of revenue funds the credits that keep data flowing.</li>
+          <li><b>A ready first market.</b> URA's 2026 Confirmed Lists carry 9,320 GLS units, all under the strictest green standards.</li>
+        </ul>
+      </div>
+      <div class="c-6">
+        <h3>Business model (illustrative)</h3>
+        <div class="chart" id="bizchart"></div>
+        <p class="tiny muted">Assumes 3 → 30 new sites a year plus retrofits of existing buildings, with monitoring renewing for 5 years. In the case study, client value ≈ <span id="biz-roi">9.7</span>× the present value of fees. Proposed pilot: one GLS site plus one existing microforest, with the first verified nature-KPI report within 12 months.</p>
+      </div>
+    </div>
+
+    <div class="note"><b>Research note and disclaimer.</b> UrbanPulse is an independent academic research prototype built entirely from public information. Companies, agencies, loans and projects are cited only as public examples of market practice. No affiliation, endorsement or access to private data is implied, and the developer case uses an anonymised site. Prices, returns and revenues are model estimates under stated assumptions. They are not quotes, valuations, or investment or planning advice.</div>
   </div>
 </section>
 
 <!-- ================================================================ 11 METHOD -->
-<section class="chapter alt" id="method">
+<section class="chapter" id="method">
   <div class="wrap">
     <div class="kicker"><span class="n">11</span>Method, validation and limits</div>
     <div class="cols">
       <div class="c-6">
-        <h2>What we can stand behind.</h2>
+        <h2>What we can <em>stand behind</em>.</h2>
         <ul class="small">
-          <li><b>Coverage.</b> 10,749 of 10,817 residential HDB blocks (99.4%) joined to official footprints without geocoding, by matching block-number sets between street names and HDB street codes (checked against 929 OneMap-geocoded blocks: 899 correct, 2 wrong).</li>
-          <li><b>Satellite heat.</b> <span id="m-scenes">52 + 37</span> cloud-masked Landsat scenes; single-channel LST reproduces the official product with RMSE <span id="m-rmse">0.99</span> °C (bias −0.47 °C, removed by per-scene anomalies).</li>
+          <li><b>Coverage.</b> 10,749 of 10,817 residential HDB blocks (99.4%) are joined to official footprints without geocoding, by matching block-number sets between street names and HDB street codes. A check against 929 OneMap-geocoded blocks found 899 correct and 2 wrong.</li>
+          <li><b>Satellite heat.</b> <span id="m-scenes">52 + 37</span> cloud-masked Landsat scenes. Our single-channel LST reproduces the official product with RMSE <span id="m-rmse">0.99</span> °C; the bias of −0.47 °C is removed by per-scene anomalies.</li>
           <li><b>Heat drivers.</b> R² 0.68 with town fixed effects; gradient-boosted trees predict an unseen town with R² 0.59.</li>
-          <li><b>Robustness.</b> Town rankings hold under stakeholder weight lenses (Spearman 0.80–0.97) and 2,000 random weightings; changing the shade penalty from 0 to 1.0 moves no town by more than 0.6 points.</li>
+          <li><b>Robustness.</b> Town rankings hold under stakeholder weight lenses (Spearman 0.80–0.97) and 2,000 random weightings. Changing the shade penalty from 0 to 1.0 moves no town by more than 0.6 points.</li>
           <li><b>Redundancy.</b> No pair of the 13 scored indicators exceeds |ρ| = 0.8.</li>
         </ul>
       </div>
@@ -506,19 +600,19 @@ report-only actions → fixed amount; under-sampled spaces → bounty</div>
         <h3>Limits, stated plainly</h3>
         <ul class="small">
           <li>NDVI &gt; 0.6 at 10 m approximates tree canopy; it cannot separate trees from dense shrubs.</li>
-          <li>Shade along walkways depends on OpenStreetMap completeness for covered linkways; building shade is not yet modelled.</li>
-          <li>Seniors per block are estimated from Census 2020 subzone shares; Tengah had no residents then and uses the island median.</li>
-          <li>Flood resilience uses distance to 36 named PUB flood-prone locations, geocoded to a representative point each.</li>
+          <li>Walkway shade depends on how completely OpenStreetMap records covered linkways. Building shade is not yet modelled.</li>
+          <li>Seniors per block are estimated from Census 2020 subzone shares. Tengah had no residents then and uses the island median.</li>
+          <li>Flood resilience uses distance to 36 named PUB flood-prone locations, each geocoded to one representative point.</li>
           <li>Surface temperature is not air temperature or felt heat; WBGT and indoor readings are phase 2.</li>
-          <li>The value lens and heat drivers are associations; the developer case uses benchmarked assumptions, tagged in code.</li>
+          <li>The value lens and heat drivers are associations. The developer case uses benchmarked assumptions, tagged in the code.</li>
           <li>Community data does not exist yet; that is the point of Part 2.</li>
         </ul>
       </div>
     </div>
     <div class="sdg">
-      <div><b>SDG 11.7</b>Universal access to safe, inclusive and accessible green and public spaces, in particular for older persons: the inclusion check and need weights.</div>
-      <div><b>SDG 11.b</b>Integrated policies for climate adaptation and resilience: a heat target the Green Plan does not yet set.</div>
-      <div><b>SDG 11.3</b>Inclusive, participatory planning: residents and AACs as data partners, paid for taking part.</div>
+      <div><b>SDG 11.7</b>Universal access to safe, inclusive and accessible green and public spaces, in particular for older persons. The inclusion check and need weights target this.</div>
+      <div><b>SDG 11.b</b>Integrated policies for climate adaptation and resilience. UrbanPulse supplies a heat target the Green Plan does not yet set.</div>
+      <div><b>SDG 11.3</b>Inclusive, participatory planning. Residents and AACs are data partners, paid for taking part.</div>
     </div>
   </div>
 </section>
@@ -530,7 +624,7 @@ report-only actions → fixed amount; under-sampled spaces → bounty</div>
     <div class="cols">
       <div class="c-6">
         <h3>Open data used</h3>
-        <ul class="small" id="datalist">
+        <ul class="small">
           <li>HDB Property Information; HDB Existing Building footprints; HDB resale prices (2024–2026) · data.gov.sg</li>
           <li>URA Master Plan 2019 subzones; Master Plan 2025 land use; waterbodies · data.gov.sg</li>
           <li>SingStat Census 2020 residents by subzone and age · data.gov.sg</li>
@@ -558,23 +652,29 @@ report-only actions → fixed amount; under-sampled spaces → bounty</div>
           <li><a href="https://www.nature.com/articles/s42949-025-00315-8">npj Urban Sustainability (2025): SE Asian capitals heat 1990–2024</a></li>
           <li><a href="https://voiddeck.science.edu.sg/articles/environment/street-shade/">Science Centre: which street shade keeps you cool (CARES, one-north)</a></li>
           <li><a href="https://blogs.worldbank.org/zh/eastasiapacific/livability-start-neighborhood-singapore-stories-part-2">World Bank (2018): Walk2Ride covered walkways</a></li>
+          <li><a href="https://www.cdl.com.sg/newsroom/cdl-and-dbs-launch-s-300-million-multi-currency-sustainability-linked-loan-to-advance-nature-based-urban-development-solutions-in-singapore">CDL and DBS (2026): S$300M sustainability-linked loan for nature-based urban development</a></li>
+          <li><a href="https://www.edgeprop.sg/property-news/green-premium-nature-raises-housing-prices">EdgeProp (2025): green premium near Jurong Lake Gardens</a></li>
+          <li><a href="https://agfundernews.com/singapore-food-and-housing-agencies-to-rent-out-public-rooftops-for-urban-farms">AgFunderNews (2020): HDB car-park rooftops for urban farms</a></li>
           <li>Sobrino, Jiménez-Muñoz &amp; Paolini (2004): land surface temperature retrieval from Landsat TM 5, <i>Remote Sensing of Environment</i> 90, 434–440.</li>
         </ul>
         <h3 style="margin-top:24px">Photographs</h3>
         <ul class="tiny" id="photocredits"></ul>
+        <p class="tiny muted">Skyline illustration adapted from the team's slide template.</p>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
+  <img class="sky" src="assets/img/brand/skyline2.png" alt="" loading="lazy">
   <div class="wrap cols">
     <div class="c-6">
-      <div class="brand" style="color:#fff;margin-bottom:12px"><span class="brand-mark"></span>Urban Resilience Index</div>
-      <p>An independent research prototype on heat resilience and inclusion in Singapore's public housing. Not affiliated with, or endorsed by, any government agency or developer. Scores describe neighbourhood conditions from open data and are not property valuations.</p>
+      <a class="brand" href="#top" style="margin-bottom:14px"><svg><use href="#logo"/></svg><span><b>UrbanPulse</b><small>Urban Resilience Index · SG</small></span></a>
+      <p>An independent academic research prototype on heat resilience, inclusion and green finance in Singapore's public housing. It is built from public data and is not affiliated with or endorsed by any agency, company or developer named on this page. Scores describe neighbourhood conditions; they are not property valuations or advice.</p>
+      <p class="tiny muted">Code MIT · text and figures CC BY 4.0 · third-party data and photos under their own licences.</p>
     </div>
-    <div class="c-3"><h6>Explore</h6><ul><li><a href="#atlas">Atlas</a></li><li><a href="#tweaks">Tweak engine</a></li><li><a href="#method">Method</a></li></ul></div>
-    <div class="c-3"><h6>Code</h6><ul><li><a href="https://github.com/nilikun/urban-resilience-index">GitHub repository</a></li><li><a href="https://github.com/nilikun/urban-resilience-index/tree/main/figures">Paper figures</a></li></ul></div>
+    <div class="c-3"><h6>Explore</h6><ul><li><a href="#abstract">Abstract</a></li><li><a href="#atlas">Atlas</a></li><li><a href="#tweaks">Tweak engine</a></li><li><a href="#value">Business model</a></li></ul></div>
+    <div class="c-3"><h6>Code</h6><ul><li><a href="https://github.com/nilikun/urbanpulse">GitHub repository</a></li><li><a href="https://github.com/nilikun/urbanpulse/blob/main/docs/METHODS.md">Methods</a></li><li><a href="https://github.com/nilikun/urbanpulse/blob/main/docs/concept-brief.md">Concept brief</a></li></ul></div>
   </div>
 </footer>
 

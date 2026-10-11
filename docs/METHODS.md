@@ -1,4 +1,4 @@
-# Methods
+# UrbanPulse methods
 
 Every number on the website and in the README comes from the pipeline in [`uri/`](../uri) and [`case_gls_site/`](../case_gls_site), run by [`run_all.py`](../run_all.py). This note documents each step, its assumptions and how it was checked.
 
@@ -126,7 +126,7 @@ A mixed-integer programme in Gurobi for a 14,433 m², 348-unit GLS condominium s
 * URA landscape replacement (35% overall, 30% on ground) and Green Plot Ratio ≥ 3.5, with vertical and extensive greenery capped at 10% of site.
 * Zone capacities and minimum viable sizes.
 * A maintenance-fee cap of S$30 per unit per month.
-* Two sustainability-linked-loan KPIs (microforest ≥ 300 m², urban farm ≥ 400 m²), mirroring a 2026 developer SLL.
+* Two sustainability-linked-loan KPIs (microforest ≥ 300 m², urban farm ≥ 400 m²), mirroring the KPIs of a [2026 developer SLL](https://www.cdl.com.sg/newsroom/cdl-and-dbs-launch-s-300-million-multi-currency-sustainability-linked-loan-to-advance-nature-based-urban-development-solutions-in-singapore).
 
 **Objective.** Maximise 30-year NPV = sale premium (concave, tangent cuts) + verified SLL step-down + farm rent + energy − life-cycle cost.
 

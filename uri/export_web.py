@@ -24,8 +24,9 @@ X0, X1, Y0, Y1 = 2_000, 56_000, 20_000, 52_000
 TO_LL = Transformer.from_crs(3414, 4326, always_xy=True)
 
 # red <-> blue diverging, neutral grey midpoint (red = hotter / less resilient)
-DIV = LinearSegmentedColormap.from_list("div", ["#0d366b", "#256abf", "#86b6ef", "#f0efec", "#f6b1a8", "#e34948", "#9a1d22"])
-GRN = LinearSegmentedColormap.from_list("grn", ["#f0efec", "#bfe0c4", "#6fbf7c", "#2e9443", "#0b5d1e"])
+DIV = LinearSegmentedColormap.from_list("div", ["#0d366b", "#256abf", "#86b6ef", "#f2f1ec", "#f6b1a8", "#e34948", "#9a1d22"])
+SCORE = LinearSegmentedColormap.from_list("score", ["#8c510a", "#d8b365", "#f2f1ec", "#7fc8b8", "#01665e"])
+GRN = LinearSegmentedColormap.from_list("grn", ["#f2f1ec", "#cfe8d9", "#8cc9a8", "#3fa171", "#1f7a52"])
 
 
 def corners():
@@ -112,7 +113,8 @@ def run():
 
 
 def hero_and_compare():
-    """Dark hero map (surface heat + HDB blocks) and flattened 1990s / 2020s images for the compare slider."""
+    """Light 'product shot' map of block scores for the hero (with callout anchors), and white-background
+    1990s / 2020s images for the compare slider."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -120,27 +122,43 @@ def hero_and_compare():
     land30 = np.load(SAT / "landmask_30m.npy")
     now, then = np.load(SAT / "lst_now.npz"), np.load(SAT / "lst_then.npz")
     b = gpd.read_file(PROC / "blocks_scored.gpkg")
-    norm = TwoSlopeNorm(0, -6, 6)
-    # hero: 21:9, dark
-    fig = plt.figure(figsize=(24, 11), facecolor="#07111f")
-    ax = fig.add_axes([0, 0, 1, 1]); ax.set_facecolor("#07111f")
-    ax.imshow(np.where(land30, now["anom"], np.nan), extent=(X0, X1, Y0, Y1), cmap=DIV, norm=norm, alpha=0.92, interpolation="bilinear")
-    ax.scatter(b.geometry.x, b.geometry.y, s=1.2, c="white", alpha=0.75, lw=0)
-    ax.set_xlim(-9000, 62000); ax.set_ylim(20500, 53000); ax.set_aspect("equal"); ax.axis("off")
-    fig.savefig(MAPS / "hero_heat.jpg", dpi=100, facecolor="#07111f", pil_kwargs=dict(quality=82, optimize=True))
+    sz = gpd.read_file(ROOT / "data" / "raw" / "subzones.geojson").to_crs(3414)
+    land = sz.union_all(); pa = sz.dissolve(by="PLN_AREA_N")
+    ext = (3_000, 52_000, 24_500, 50_500)                     # x0, x1, y0, y1 of the hero image
+    W, H = 2400, int(2400 * (ext[3] - ext[2]) / (ext[1] - ext[0]))
+    fig = plt.figure(figsize=(W / 200, H / 200), facecolor="white")
+    ax = fig.add_axes([0, 0, 1, 1]); ax.set_facecolor("white")
+    gpd.GeoSeries([land]).plot(ax=ax, color="#eef2ef", edgecolor="#d5ddd7", lw=0.6)
+    pa.boundary.plot(ax=ax, color="white", lw=0.8)
+    o = b.sort_values("need")
+    ax.scatter(o.geometry.x, o.geometry.y, c=o.score, cmap=SCORE, norm=TwoSlopeNorm(50, 10, 90), s=14, lw=0)
+    ax.set_xlim(ext[0], ext[1]); ax.set_ylim(ext[2], ext[3]); ax.axis("off")
+    fig.savefig(MAPS / "hero_map.png", dpi=200, facecolor="white")
     plt.close(fig)
+    towns = pd.read_csv(PROC / "towns.csv").set_index("town")
+    anchors = {}
+    for t in ["Bedok", "Tengah", "Woodlands", "Bukit Panjang", "Punggol"]:
+        g = b[b.town == t]
+        x, y = g.geometry.x.median(), g.geometry.y.median()
+        anchors[t] = dict(left=round(100 * (x - ext[0]) / (ext[1] - ext[0]), 2), top=round(100 * (ext[3] - y) / (ext[3] - ext[2]), 2),
+                          score=round(float(towns.loc[t, "score"]), 1), gap=round(float(towns.loc[t, "inclusion_gap"]), 1))
+    (DATA / "hero_anchors.json").write_text(json.dumps(anchors, indent=1))
+    norm = TwoSlopeNorm(0, -6, 6)
     for tag, arr in (("1990s", then["anom"]), ("2020s", now["anom"])):
-        fig = plt.figure(figsize=(18, 10.67), facecolor="#f4f3ef")
-        ax = fig.add_axes([0, 0, 1, 1]); ax.set_facecolor("#f4f3ef")
+        fig = plt.figure(figsize=(18, 10.67), facecolor="white")
+        ax = fig.add_axes([0, 0, 1, 1]); ax.set_facecolor("white")
         ax.imshow(np.where(land30, arr, np.nan), extent=(X0, X1, Y0, Y1), cmap=DIV, norm=norm, interpolation="nearest")
         ax.set_xlim(X0, X1); ax.set_ylim(Y0, Y1); ax.axis("off")
-        fig.savefig(MAPS / f"compare_{tag}.jpg", dpi=100, facecolor="#f4f3ef", pil_kwargs=dict(quality=84, optimize=True))
+        fig.savefig(MAPS / f"compare_{tag}.jpg", dpi=100, facecolor="white", pil_kwargs=dict(quality=86, optimize=True))
         plt.close(fig)
+    (MAPS / "hero_heat.jpg").unlink(missing_ok=True)
     im = Image.open(MAPS / "ndvi_2024_2025.png")
-    im.quantize(colors=64, method=Image.Quantize.FASTOCTREE).save(MAPS / "ndvi_2024_2025.png", optimize=True)
+    if im.mode == "RGBA":
+        im.quantize(colors=64, method=Image.Quantize.FASTOCTREE).save(MAPS / "ndvi_2024_2025.png", optimize=True)
     for f in ("lst_2021_2025.png", "lst_1988_1997.png", "lst_change.png"):
-        Image.open(MAPS / f).quantize(colors=96, method=Image.Quantize.FASTOCTREE).save(MAPS / f, optimize=True)
-
+        im = Image.open(MAPS / f)
+        if im.mode == "RGBA":
+            im.quantize(colors=96, method=Image.Quantize.FASTOCTREE).save(MAPS / f, optimize=True)
 
 if __name__ == "__main__":
     run()

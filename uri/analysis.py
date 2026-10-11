@@ -110,22 +110,30 @@ def heat_drivers(b):
     groups = df.town.astype("category").cat.codes.values
     preds = np.full(len(df), np.nan)
     gkf = GroupKFold(n_splits=df.town.nunique())
+    grid = np.linspace(df.canopy200.quantile(0.02), df.canopy200.quantile(0.98), 25)
+    pdp_folds = []
     for tr, te in gkf.split(df[feats], df.lst_anom, groups):
         m = HistGradientBoostingRegressor(max_iter=300, learning_rate=0.05, max_leaf_nodes=31, random_state=0)
         m.fit(df[feats].iloc[tr], df.lst_anom.iloc[tr])
         preds[te] = m.predict(df[feats].iloc[te])
+        sub = df[feats].sample(min(3000, len(df)), random_state=0)
+        curve = []
+        for g in grid:
+            d2 = sub.copy(); d2["canopy200"] = g
+            curve.append(float(m.predict(d2).mean()))
+        pdp_folds.append(np.array(curve) - curve[0])      # change relative to the lowest canopy level
     r2_loto = 1 - np.sum((df.lst_anom - preds) ** 2) / np.sum((df.lst_anom - df.lst_anom.mean()) ** 2)
     m = HistGradientBoostingRegressor(max_iter=300, learning_rate=0.05, max_leaf_nodes=31, random_state=0).fit(df[feats], df.lst_anom)
     pi = permutation_importance(m, df[feats], df.lst_anom, n_repeats=10, random_state=0)
     imp = [dict(feature=f, importance=float(pi.importances_mean[i]), sd=float(pi.importances_std[i])) for i, f in enumerate(feats)]
-    # partial dependence of heat on canopy (for the web chart)
-    grid = np.linspace(df.canopy200.quantile(0.02), df.canopy200.quantile(0.98), 25)
-    pdp = []
-    for g in grid:
-        d2 = df[feats].copy(); d2["canopy200"] = g
-        pdp.append(float(m.predict(d2).mean()))
+    P = np.array(pdp_folds)
+    pdp = dict(x=grid.tolist(), y=np.median(P, 0).tolist(), lo=np.percentile(P, 5, 0).tolist(), hi=np.percentile(P, 95, 0).tolist(),
+               q25=np.percentile(P, 25, 0).tolist(), q75=np.percentile(P, 75, 0).tolist(), n_models=len(P))
+    ci50 = ols.conf_int(alpha=0.5)
+    for c in coef:
+        c["ci50_lo"], c["ci50_hi"] = float(ci50.loc[c["feature"], 0]), float(ci50.loc[c["feature"], 1])
     return dict(n=len(df), ols_r2=float(ols.rsquared), coef=coef, gbm_r2_leave_one_town_out=float(r2_loto),
-                importance=imp, pdp_canopy=dict(x=grid.tolist(), y=pdp),
+                importance=imp, pdp_canopy=pdp,
                 canopy_10pp_effect_c=float(raw.params["canopy200"] * 10))
 
 
@@ -160,8 +168,10 @@ def value_lens(b):
     f = ("lp ~ np.log(floor_area_sqm) + storey + lease + I(lease**2) + C(flat_type) + C(flat_model) + C(month) + C(town)"
          " + canopy10 + lst_anom + park100 + mrt100 + hawker100")
     m = smf.ols(f, data=r).fit(cov_type="cluster", cov_kwds={"groups": r.block_id})
-    pct = lambda c: dict(pct=float(100 * (np.exp(m.params[c]) - 1)), lo=float(100 * (np.exp(m.conf_int().loc[c, 0]) - 1)),
-                         hi=float(100 * (np.exp(m.conf_int().loc[c, 1]) - 1)), p=float(m.pvalues[c]))
+    ci95, ci50 = m.conf_int(), m.conf_int(alpha=0.5)
+    tr = lambda v: float(100 * (np.exp(v) - 1))
+    pct = lambda c: dict(pct=tr(m.params[c]), lo=tr(ci95.loc[c, 0]), hi=tr(ci95.loc[c, 1]),
+                         lo50=tr(ci50.loc[c, 0]), hi50=tr(ci50.loc[c, 1]), p=float(m.pvalues[c]))
     return dict(n=int(m.nobs), blocks=int(r.block_id.nunique()), r2=float(m.rsquared), period=f"{r.month.min()} to {r.month.max()}",
                 median_price=float(r.resale_price.median()),
                 effects={"+10 pp canopy within 200 m": pct("canopy10"), "+1 degC surface heat": pct("lst_anom"),
@@ -191,9 +201,12 @@ def robustness(b, n_mc=2000):
         lenses[name]["top5"] = list(ranks[name].sort_values().index[:5])
     w0 = np.array([WEIGHTS[p] for p in PILLARS], float) / 100
     draws = rng.dirichlet(w0 * 40, n_mc)
-    R = np.array([town_scores(b, scored, dict(zip(PILLARS, w))).rank(ascending=False).values for w in draws])
+    S = np.array([town_scores(b, scored, dict(zip(PILLARS, w))).values for w in draws])
+    R = np.array([pd.Series(row).rank(ascending=False).values for row in S])
     names = b.town_cat.cat.categories
-    mc = {t: dict(p5=float(np.percentile(R[:, i], 5)), p50=float(np.median(R[:, i])), p95=float(np.percentile(R[:, i], 95)))
+    mc = {t: dict(p5=float(np.percentile(R[:, i], 5)), p50=float(np.median(R[:, i])), p95=float(np.percentile(R[:, i], 95)),
+                  s5=float(np.percentile(S[:, i], 5)), s25=float(np.percentile(S[:, i], 25)), s50=float(np.median(S[:, i])),
+                  s75=float(np.percentile(S[:, i], 75)), s95=float(np.percentile(S[:, i], 95)))
           for i, t in enumerate(names)}
     return dict(lenses=lenses, weight_mc=mc, mc_draws=n_mc, dirichlet_concentration=40)
 

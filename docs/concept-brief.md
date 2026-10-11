@@ -1,6 +1,6 @@
-# Urban Resilience Index: Concept Brief
+# UrbanPulse: Urban Resilience Index concept brief
 
-> The proposal this repository implements. Where the build has tested or changed a point, a note in *italics* says so and links to the evidence.
+> The proposal UrbanPulse implements. Cited companies and loans are public examples of market practice; no affiliation is implied. Where the build has tested or changed a point, a note in *italics* says so and links to the evidence.
 
 ## Summary
 
@@ -170,7 +170,7 @@ Residents earn credits for verified actions that cool their block, and for repor
 
 ### Hero feature: rooftop farm
 
-The rooftop farm is our lead community feature because its output (kg harvested) is easy to verify and links to several returns. HDB carpark rooftops have already been tendered to urban farms ([2020 round: 9 sites, 1,808–3,311 m², 3-year terms](https://agfundernews.com/singapore-food-and-housing-agencies-to-rent-out-public-rooftops-for-urban-farms)), and urban farming is a target in a listed Singapore developer's S$300M sustainability-linked loan (May 2026).
+The rooftop farm is our lead community feature because its output (kg harvested) is easy to verify and links to several returns. HDB carpark rooftops have already been tendered to urban farms ([2020 round: 9 sites, 1,808–3,311 m², 3-year terms](https://agfundernews.com/singapore-food-and-housing-agencies-to-rent-out-public-rooftops-for-urban-farms)), and urban farming is a target in [CDL's S$300M sustainability-linked loan with DBS](https://www.cdl.com.sg/newsroom/cdl-and-dbs-launch-s-300-million-multi-currency-sustainability-linked-loan-to-advance-nature-based-urban-development-solutions-in-singapore) (May 2026).
 
 | Metric | Community source | Return it proves |
 |---|---|---|
@@ -231,7 +231,7 @@ Greenery provision is a mandatory development cost. The project pass converts th
 | Return | Evidence | How the tool helps |
 |---|---|---|
 | Higher sale price | Condos within 1 km of Jurong Lake Gardens averaged $1,617 psf vs $1,383 psf within 2 km; simple averages, not proof of cause ([EdgeProp, Jul 2025](https://www.edgeprop.sg/property-news/green-premium-nature-raises-housing-prices)) | Places greenery for views, park links and shade buyers value; backs it with resale analysis |
-| Cheaper loans | A listed developer's S$300M sustainability-linked loan (May 2026) targets microforests and urban farming; a 2023 bank loan to the same developer lowers the rate when targets are met | Monitoring reports supply verified nature data for loan targets |
+| Cheaper loans | [CDL's S$300M sustainability-linked loan with DBS](https://www.cdl.com.sg/newsroom/cdl-and-dbs-launch-s-300-million-multi-currency-sustainability-linked-loan-to-advance-nature-based-urban-development-solutions-in-singapore) (May 2026) targets microforests and urban farming; a 2023 bank loan to the same developer lowers the rate when targets are met | Monitoring reports supply verified nature data for loan targets |
 | Subsidies | [Skyrise Greenery Incentive](https://cuge.nparks.gov.sg/grants/skyrise-greenery-incentive-scheme--sgis-): up to 50% co-funding, capped at $500/m² for green walls | Picks greenery that counts for compliance and qualifies for co-funding |
 | Extra floor area | URA lets sky terraces and communal gardens count toward the requirement, some with floor-area exemptions (current terms to verify) | Flags designs that meet the rule and free up floor area |
 | Greenery that earns rent | HDB carpark rooftops rented to urban farms; a reported top bid of $90,000/year (2020, unverified) | Turns roof or landscape area into rented farm or garden plots |
@@ -270,4 +270,6 @@ Every greenery feature a user adds is one shared object (location, type, area, c
 * [npj Urban Sustainability 2025: SE Asian capitals heat 1990–2024](https://www.nature.com/articles/s42949-025-00315-8) (abstract only)
 * [Science Centre: which street shade keeps you cool (CARES, one-north)](https://voiddeck.science.edu.sg/articles/environment/street-shade/)
 * [World Bank: Walk2Ride 400 m covered walkways (Nov 2018)](https://blogs.worldbank.org/zh/eastasiapacific/livability-start-neighborhood-singapore-stories-part-2)
+* [CDL and DBS: S$300M sustainability-linked loan (May 2026)](https://www.cdl.com.sg/newsroom/cdl-and-dbs-launch-s-300-million-multi-currency-sustainability-linked-loan-to-advance-nature-based-urban-development-solutions-in-singapore)
+* [EdgeProp: green premium near Jurong Lake Gardens (Jul 2025)](https://www.edgeprop.sg/property-news/green-premium-nature-raises-housing-prices)
 * [data.gov.sg Open Data Licence](https://data.gov.sg/open-data-licence)

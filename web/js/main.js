@@ -24,8 +24,8 @@ const PWHY = {
   access: "Seniors walk to daily needs; HDB blocks average 294 m to amenities (Lee et al.).",
   flood: "Completes the blue-green brief; PUB publishes current flood-prone locations.",
 };
-// red <-> blue diverging; low score = red
-const DIV_STOPS = [[10, "#9a1d22"], [30, "#e34948"], [42, "#f6b1a8"], [50, "#f0efec"], [58, "#86b6ef"], [70, "#256abf"], [90, "#0d366b"]];
+// scores use a colour-blind-safe brown <-> teal diverging scale (same as figures/)
+const DIV_STOPS = [[10, "#8c510a"], [30, "#d8b365"], [50, "#f2f1ec"], [70, "#7fc8b8"], [90, "#01665e"]];   // BrBG: brown = less resilient
 function divColor(v) {
   for (let i = 1; i < DIV_STOPS.length; i++) {
     const [a, ca] = DIV_STOPS[i - 1], [b, cb] = DIV_STOPS[i];
@@ -58,7 +58,7 @@ function hideTip() { tip.style.opacity = 0; }
 
 async function getJSON(p) { const r = await fetch(p); if (!r.ok) throw new Error(p); return r.json(); }
 
-// ------------------------------------------------------------------ chrome: rails, nav, reveal, counters, pinned story
+// ------------------------------------------------------------------ chrome: rails and nav highlight (no scroll hijacking)
 function chrome() {
   $$(".rail-ctrl button").forEach((b) => b.addEventListener("click", () => {
     const r = document.getElementById(b.dataset.rail);
@@ -69,30 +69,6 @@ function chrome() {
     if (e.isIntersecting) links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id));
   }), { rootMargin: "-45% 0px -50% 0px" });
   $$("section[id], header[id]").forEach((s) => io.observe(s));
-  const rv = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); rv.unobserve(e.target); } }), { threshold: 0.12 });
-  $$(".chapter h2, .stats, .figure, .rail, .tbl, .chart").forEach((el) => { el.classList.add("reveal"); rv.observe(el); });
-
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  $$("[data-count]").forEach((el) => {
-    const end = Number(el.dataset.count);
-    if (reduce) return;
-    const t0 = performance.now();
-    const step = (t) => { const k = Math.min(1, (t - t0) / 1400); el.textContent = fmt(end * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); };
-    requestAnimationFrame(step);
-  });
-
-  const pin = $("#loop"), track = $("#pintrack"), bar = $("#pinbar");
-  const narrow = () => matchMedia("(max-width: 760px), (prefers-reduced-motion: reduce)").matches;
-  const onScroll = () => {
-    if (narrow()) { track.style.transform = ""; return; }
-    const r = pin.getBoundingClientRect();
-    const total = pin.offsetHeight - innerHeight;
-    const k = Math.min(1, Math.max(0, -r.top / total));
-    const max = track.scrollWidth - innerWidth + 80;
-    track.style.transform = `translateX(${-k * Math.max(0, max)}px)`;
-    bar.style.width = (k * 100) + "%";
-  };
-  addEventListener("scroll", onScroll, { passive: true }); addEventListener("resize", onScroll); onScroll();
 }
 
 // ------------------------------------------------------------------ pillars + five tests
@@ -150,7 +126,7 @@ function hbars(el, data, { key, max, color, label, fmtv, onClick }) {
   const x = (v) => padL + (W - padL - padR) * Math.max(0, v) / max;
   const ticks = [0, max / 4, max / 2, (3 * max) / 4, max].map((t) => Math.round(t));
   el.innerHTML = `<svg viewBox="0 0 ${W} ${h}" role="img" aria-label="${label}">
-    ${ticks.map((t) => `<line x1="${x(t)}" x2="${x(t)}" y1="0" y2="${h - 20}" stroke="#e1e0d9" stroke-width="1"/><text x="${x(t)}" y="${h - 6}" text-anchor="middle">${t}</text>`).join("")}
+    ${ticks.map((t) => `<line x1="${x(t)}" x2="${x(t)}" y1="0" y2="${h - 20}" stroke="#e1e7e3" stroke-width="1"/><text x="${x(t)}" y="${h - 6}" text-anchor="middle">${t}</text>`).join("")}
     ${data.map((d, i) => `<g class="row ${d.hl ? "hl" : ""}" data-i="${i}" style="cursor:${onClick ? "pointer" : "default"}">
       <rect x="0" y="${i * H}" width="${W}" height="${H}" fill="transparent"/>
       <text x="${padL - 8}" y="${i * H + 13}" text-anchor="end">${d.town}</text>
@@ -169,9 +145,9 @@ function renderTownCharts() {
   const scores = blockScores();
   const t = townTable(scores).sort((a, b) => b.score - a.score);
   t.forEach((d) => (d.hl = d.town === state.focusTown));
-  hbars($("#rankchart"), t, { key: "score", max: 80, label: "Town score ranking", color: (d) => (d.hl ? "#eb6834" : "#003d7c"), fmtv: (v) => fmt(v, 1), onClick: (d) => focusTown(d.town) });
+  hbars($("#rankchart"), t, { key: "score", max: 80, label: "Town score ranking", color: (d) => (d.hl ? "#111a15" : "#1f7a52"), fmtv: (v) => fmt(v, 1), onClick: (d) => focusTown(d.town) });
   const top = [...t].sort((a, b) => b.gap - a.gap).slice(0, 3).map((d) => d.town);
-  hbars($("#gapchart"), t, { key: "gap", max: 30, label: "Inclusion gap by town", color: (d) => (d.hl ? "#eb6834" : top.includes(d.town) ? "#52514e" : "#c3c2b7"), fmtv: (v) => fmt(v, 1), onClick: (d) => focusTown(d.town) });
+  hbars($("#gapchart"), t, { key: "gap", max: 30, label: "Inclusion gap by town", color: (d) => (d.hl ? "#111a15" : top.includes(d.town) ? "#1f7a52" : "#c9d3cc"), fmtv: (v) => fmt(v, 1), onClick: (d) => focusTown(d.town) });
   return scores;
 }
 
@@ -197,7 +173,7 @@ function applyLayer(scores) {
   if (R[state.layer]) {
     map.setLayoutProperty(R[state.layer], "visibility", "visible");
     map.setPaintProperty("blocks", "circle-color", "#ffffff");
-    map.setPaintProperty("blocks", "circle-stroke-color", "#0b0b0b");
+    map.setPaintProperty("blocks", "circle-stroke-color", "#111a15");
     map.setPaintProperty("blocks", "circle-opacity", 0.85);
   } else {
     map.getSource("blocks").setData(geojson(scores));
@@ -296,7 +272,7 @@ function targets(an) {
 
 // ------------------------------------------------------------------ tweaks
 function tweaks(tw, blocksCsv) {
-  const TYPE = { green_pocket: ["Green pocket", "#008300"], rooftop_farm: ["Rooftop farm", "#c2507c"], shade_walkway: ["Shaded walkway", "#2a78d6"] };
+  const TYPE = { green_pocket: ["Green pocket", "#1f7a52"], rooftop_farm: ["Rooftop farm", "#b5527f"], shade_walkway: ["Shaded walkway", "#2a78d6"] };
   const pretty = (l) => l.replace(/ a open/g, " an open").replace(/m2/g, "m²");
   const key = (c) => c.type + "|" + c.label;                     // keyed on the raw label from the engine
   const cands = tw.candidates.map((c, i) => ({ ...c, i, nice: pretty(c.label) }));
@@ -323,7 +299,7 @@ function tweaks(tw, blocksCsv) {
       note = `${S.length} selected · sum of individual effects (approximate when tweaks overlap). Today: score ${fmt(base.score, 1)}, gap ${fmt(base.gap, 1)}.`;
     }
     $("#t-score").textContent = fmt(score, 1); $("#t-worst").textContent = fmt(worst, 1); $("#t-gap").textContent = fmt(gap, 1);
-    $("#t-gap").style.color = gap > base.gap + 0.05 ? "#9a1d22" : gap < base.gap - 0.05 ? "#0b5d1e" : "";
+    $("#t-gap").style.color = gap > base.gap + 0.05 ? "#8c510a" : gap < base.gap - 0.05 ? "#1f7a52" : "";
     $("#t-note").textContent = note;
     if (tmapReady) {
       tmap.getSource("cands").setData(candFC());
@@ -360,12 +336,12 @@ function tweaks(tw, blocksCsv) {
     tmap.addLayer({ id: "tb", type: "circle", source: "tb", paint: {
       "circle-radius": ["interpolate", ["linear"], ["zoom"], 12, 3, 16, 8],
       "circle-color": ["case", ["<", ["get", "v"], 0], ["interpolate", ["linear"], ["get", "s"], ...DIV_STOPS.flat()],
-        ["interpolate", ["linear"], ["get", "v"], 0, "#e8e6df", 0.5, "#f6b1a8", 2, "#eb6834", 4, "#9a1d22"]],
-      "circle-stroke-color": ["case", ["==", ["get", "w"], 1], "#0b0b0b", "#ffffff"], "circle-stroke-width": ["case", ["==", ["get", "w"], 1], 1.1, 0.4] } });
+        ["interpolate", ["linear"], ["get", "v"], 0, "#e6e9e6", 0.5, "#8cc9a8", 2, "#1f7a52", 4, "#0b4a30"]],
+      "circle-stroke-color": ["case", ["==", ["get", "w"], 1], "#111a15", "#ffffff"], "circle-stroke-width": ["case", ["==", ["get", "w"], 1], 1.1, 0.4] } });
     tmap.addSource("cands", { type: "geojson", data: candFC() });
     tmap.addLayer({ id: "cands", type: "circle", source: "cands", paint: {
       "circle-radius": ["case", ["==", ["get", "on"], 1], 9, 5],
-      "circle-color": ["match", ["get", "t"], "green_pocket", "#008300", "rooftop_farm", "#c2507c", "#2a78d6"],
+      "circle-color": ["match", ["get", "t"], "green_pocket", "#1f7a52", "rooftop_farm", "#b5527f", "#2a78d6"],
       "circle-opacity": ["case", ["==", ["get", "on"], 1], 1, 0.45], "circle-stroke-color": "#fff", "circle-stroke-width": 2 } });
     const pop = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 10 });
     tmap.on("mousemove", "cands", (e) => { const p = e.features[0].properties; pop.setLngLat(e.lngLat).setHTML(`<b>${p.label}</b><br>town score ${sign(p.g, 2)}`).addTo(tmap); });
@@ -381,18 +357,19 @@ function tweaks(tw, blocksCsv) {
 function valueChart(an) {
   const v = an.value_lens, el = $("#valuechart");
   const rows = Object.entries(v.effects).map(([k, e]) => ({ k: k.replace("degC", "°C"), ...e }));
-  const W = el.clientWidth || 640, H = 46 * rows.length + 50, padL = 210, padR = 30;
-  const lo = Math.min(...rows.map((r) => r.lo), -0.2), hi = Math.max(...rows.map((r) => r.hi), 0.2);
+  const W = el.clientWidth || 640, H = 46 * rows.length + 54, padL = 200, padR = 56;
+  const lo = Math.min(...rows.map((r) => r.lo)) - 0.08, hi = Math.max(...rows.map((r) => r.hi)) + 0.08;
   const x = (val) => padL + (W - padL - padR) * (val - lo) / (hi - lo);
   const ticks = [-0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75].filter((t) => t >= lo && t <= hi);
-  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Value lens coefficients">
-    ${ticks.map((t) => `<line x1="${x(t)}" x2="${x(t)}" y1="10" y2="${H - 34}" stroke="${t === 0 ? "#898781" : "#e1e0d9"}"/><text x="${x(t)}" y="${H - 18}" text-anchor="middle">${t > 0 ? "+" : ""}${t}%</text>`).join("")}
-    ${rows.map((r, i) => { const y = 30 + i * 46, c = /canopy|heat/.test(r.k) ? "#eb6834" : "#52514e"; return `<g class="row" data-i="${i}">
-      <text x="${padL - 12}" y="${y + 4}" text-anchor="end" style="fill:#0b0b0b">${r.k}</text>
-      <line x1="${x(r.lo)}" x2="${x(r.hi)}" y1="${y}" y2="${y}" stroke="${c}" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="${x(r.pct)}" cy="${y}" r="6" fill="${c}" stroke="#fff" stroke-width="2"/>
-      <text x="${x(r.hi) + 8}" y="${y + 4}">${r.pct > 0 ? "+" : ""}${r.pct.toFixed(2)}%</text></g>`; }).join("")}
-    <text x="${padL}" y="${H - 2}" style="fill:#898781">% change in resale price, 95% CI (block-clustered); n = ${fmt(v.n)} transactions, ${fmt(v.blocks)} blocks</text>
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Value lens coefficients with 95% and 50% confidence intervals">
+    ${ticks.map((t) => `<line x1="${x(t)}" x2="${x(t)}" y1="10" y2="${H - 38}" stroke="${t === 0 ? "#8a918c" : "#e1e7e3"}"/><text x="${x(t)}" y="${H - 22}" text-anchor="middle">${t > 0 ? "+" : ""}${t}%</text>`).join("")}
+    ${rows.map((r, i) => { const y = 30 + i * 46, lead = /canopy|heat/.test(r.k), c = lead ? "#1f7a52" : "#7d8580", cl = lead ? "#dcefe4" : "#e9ece9"; return `<g class="row" data-i="${i}">
+      <text x="${padL - 12}" y="${y + 4}" text-anchor="end" style="fill:#111a15">${r.k}</text>
+      <rect x="${x(r.lo)}" y="${y - 10}" width="${x(r.hi) - x(r.lo)}" height="20" fill="${cl}"/>
+      <rect x="${x(r.lo50)}" y="${y - 4}" width="${Math.max(2, x(r.hi50) - x(r.lo50))}" height="8" fill="${c}"/>
+      <circle cx="${x(r.pct)}" cy="${y}" r="5" fill="#fff" stroke="${c}" stroke-width="2"/>
+      <text x="${x(r.hi) + 8}" y="${y + 4}" style="fill:${c}">${r.pct > 0 ? "+" : ""}${r.pct.toFixed(2)}%</text></g>`; }).join("")}
+    <text x="${padL}" y="${H - 2}" style="fill:#8a918c">% change in resale price · bars: 95% and 50% CI</text>
   </svg>`;
   $$(".row", el).forEach((g) => { const r = rows[g.dataset.i]; g.addEventListener("mousemove", (e) => showTip(e, `<b>${r.k}</b><br>${r.pct > 0 ? "+" : ""}${r.pct.toFixed(2)}% (95% CI ${r.lo.toFixed(2)} to ${r.hi.toFixed(2)})<br>p = ${r.p < 0.001 ? "< 0.001" : r.p.toFixed(3)}`)); g.addEventListener("mouseleave", hideTip); });
   $("#vl-n").textContent = fmt(v.n);
@@ -408,18 +385,31 @@ function caseStudy(cs) {
   $("#cs-fee").textContent = `S$${Math.round(sh.fee_unit_month)}→${Math.round(up.fee_unit_month)}`;
   $("#biz-roi").textContent = cs.business.client_roi.toFixed(1);
   const b = cs.business, el = $("#bizchart");
-  const seg = [["rev_pass", "Project Pass", "#2a78d6"], ["rev_mon", "Monitoring", "#eb6834"], ["rev_retro", "Retrofit monitoring", "#1baf7a"]];
+  const seg = [["rev_pass", "Project Pass", "#1f7a52"], ["rev_mon", "Monitoring", "#8cc9a8"], ["rev_retro", "Retrofit monitoring", "#c9d3cc"]];
   const W = el.clientWidth || 600, H = 240, padL = 40, padB = 28, max = Math.max(...b.rev_total) * 1.12, bw = (W - padL) / b.years.length * 0.56;
   const y = (v) => (H - padB) - (H - padB - 10) * v / max;
   let bars = "";
   b.years.forEach((yr, i) => {
     let acc = 0; const cx = padL + (W - padL) * (i + 0.5) / b.years.length;
     seg.forEach(([k, , c]) => { const v = b[k][i]; bars += `<rect class="seg" data-i="${i}" x="${cx - bw / 2}" y="${y(acc + v) + 1}" width="${bw}" height="${Math.max(0, y(acc) - y(acc + v) - 2)}" fill="${c}" rx="2"/>`; acc += v; });
-    bars += `<text x="${cx}" y="${y(acc) - 6}" text-anchor="middle" style="fill:#0b0b0b;font-weight:600">S$${(acc / 1e6).toFixed(1)}M</text><text x="${cx}" y="${H - 8}" text-anchor="middle">Year ${yr}</text>`;
+    bars += `<text x="${cx}" y="${y(acc) - 6}" text-anchor="middle" style="fill:#111a15;font-weight:600">S$${(acc / 1e6).toFixed(1)}M</text><text x="${cx}" y="${H - 8}" text-anchor="middle">Year ${yr}</text>`;
   });
   el.innerHTML = `<div style="display:flex;gap:16px;font-size:12.5px;margin-bottom:6px">${seg.map(([, n, c]) => `<span><i style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${c};margin-right:6px"></i>${n}</span>`).join("")}</div>
-    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Five-year revenue build-up">${[0, 2e6, 4e6, 6e6].map((t) => `<line x1="${padL}" x2="${W}" y1="${y(t)}" y2="${y(t)}" stroke="#e1e0d9"/><text x="${padL - 6}" y="${y(t) + 4}" text-anchor="end">${t / 1e6}M</text>`).join("")}${bars}</svg>`;
+    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Five-year revenue build-up">${[0, 2e6, 4e6, 6e6].map((t) => `<line x1="${padL}" x2="${W}" y1="${y(t)}" y2="${y(t)}" stroke="#e1e7e3"/><text x="${padL - 6}" y="${y(t) + 4}" text-anchor="end">${t / 1e6}M</text>`).join("")}${bars}</svg>`;
   $$(".seg", el).forEach((r) => { const i = r.dataset.i; r.addEventListener("mousemove", (e) => showTip(e, `<b>Year ${b.years[i]}</b><br>${b.new_sites[i]} new sites · ${b.monitored[i]} monitored<br>Pass S$${fmt(b.rev_pass[i] / 1e3)}k · Monitoring S$${fmt(b.rev_mon[i] / 1e3)}k · Retrofit S$${fmt(b.rev_retro[i] / 1e3)}k`)); r.addEventListener("mouseleave", hideTip); });
+}
+
+async function heroPins() {
+  try {
+    const a = await getJSON("data/hero_anchors.json"), el = $("#heromap");
+    const txt = {
+      "Bedok": (d) => `<b>Bedok</b>score ${fmt(d.score, 0)} · <span class="w">inclusion gap ${fmt(d.gap, 0)}</span>`,
+      "Tengah": (d) => `<b>Tengah, the newest town</b><span class="w">lowest score ${fmt(d.score, 0)}</span>: trees still growing`,
+      "Woodlands": () => `<b>Woodlands</b><span class="g">6 tweaks: worst-served +2.8</span>`,
+      "Punggol": () => `<b>Punggol</b><span class="g">coolest town surfaces</span>`,
+    };
+    el.insertAdjacentHTML("beforeend", Object.entries(txt).map(([t, f]) => `<div class="pin-card" style="left:${a[t].left}%;top:${a[t].top}%">${f(a[t])}</div>`).join(""));
+  } catch (e) { /* the map image stands on its own */ }
 }
 
 async function credits() {
@@ -431,7 +421,7 @@ async function credits() {
 
 // ------------------------------------------------------------------ boot
 (async function main() {
-  chrome(); compare(); credits();
+  chrome(); compare(); credits(); heroPins();
   const [meta, analysis, blocks, tw, tbcsv, cs] = await Promise.all([
     getJSON("data/meta.json"), getJSON("data/analysis.json"), getJSON("data/blocks.json"),
     getJSON("data/tweaks_woodlands.json"), fetch("data/tweaks_woodlands_blocks.csv").then((r) => r.text()), getJSON("data/case.json"),
